@@ -9,24 +9,24 @@ import {
   Label,
   Error,
   InputContainer,
-  StyledLink,
   Return,
+  StyledLink,
 } from "./styles";
 import { Formik, Field } from "formik";
 import { initialValues, validationSchema } from "./constants";
-import { signup } from "../../../services/api/auth";
+import { login } from "../../../services/api/auth";
 
-const SignupForm: FC = () => {
+const LoginForm: FC = () => {
   const navigate = useNavigate();
   const [error, setError] = useState<string | null>(null);
 
-  const handleSignup = async (values: typeof initialValues) => {
-    const signupError = await signup(values);
+  const handleLogin = async (values: typeof initialValues) => {
+    const loginError = await login(values);
 
-    if (!signupError) {
+    if (!loginError) {
       navigate("/landing");
     } else {
-      setError(signupError);
+      setError(loginError);
     }
   };
 
@@ -38,7 +38,7 @@ const SignupForm: FC = () => {
     <FormContainer>
       <Formik
         validationSchema={validationSchema}
-        onSubmit={handleSignup}
+        onSubmit={handleLogin}
         initialValues={initialValues}
       >
         <Form>
@@ -60,17 +60,14 @@ const SignupForm: FC = () => {
               </InputContainer>
             )}
           </Field>
-          <FormButton type="submit">SignUp</FormButton>
-          <div style={{ marginTop: "10px" }}>
-            <Return>
-              Already have an account?{" "}
-              <StyledLink href="/login">Go to login 👈 </StyledLink>
-            </Return>
-          </div>
+          <FormButton type="submit">Login</FormButton>
+          <Return>
+            New here? <StyledLink href="/signup">Go to register 👈 </StyledLink>
+          </Return>
         </Form>
       </Formik>
     </FormContainer>
   );
 };
 
-export default memo(SignupForm);
+export default memo(LoginForm);
