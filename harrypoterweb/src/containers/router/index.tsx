@@ -5,6 +5,8 @@ import LoginForm from "../../views/Auth/Login";
 import Categories from '../../views/Categories';
 import Welcome from "../../views/Welcome"
 import Characters from "../../views/Characters";
+import Spells from "../../views/Spells";
+
 
 
 const Router: FC = () => {
@@ -16,6 +18,8 @@ const Router: FC = () => {
             <Route path='/signup' element={<SignupForm/>}/>
             <Route path='/login' element={<LoginForm/>}/>
             <Route path='/characters' element={<Characters/>}/>
+            <Route path='/spells' element={<Spells/>}/>
+
 
 
         </Routes>

@@ -41,7 +41,7 @@ const Navbar: FC<Props> = ({ type = 'list' }) => {
                 <IconContext.Provider value={{ style: { fontSize: "2em" } }}>
                     <LogoContainer>
                         <ButtonLogo onClick={handleBackCategories}><FaDiscord /></ButtonLogo>
-                        <Title>Rick and Morty</Title>
+                        <Title>Harry Potter</Title>
                     </LogoContainer>
                     <MobileIcon onClick={() => setShowMobileMenu(!showMobileMenu)}>
                         <FaBars />
@@ -50,9 +50,6 @@ const Navbar: FC<Props> = ({ type = 'list' }) => {
                     <Menu $open={showMobileMenu}>
                         <MenuItem>
                             <MenuItemLink onClick={handleLogout}><RiLogoutBoxLine/>Logout</MenuItemLink>
-                        </MenuItem>
-                        <MenuItem>
-                            <MenuItemLink><GoSync/>Synch Api</MenuItemLink>
                         </MenuItem>
                         <MenuItem>
                             <MenuItemLink onClick={handleBackCategories}><BiCategory/>Categories </MenuItemLink>

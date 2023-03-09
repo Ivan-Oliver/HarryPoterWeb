@@ -8,15 +8,12 @@ export const FormContainer = styled.div`
   display: flex;
   justify-content: center;
   background-color: ${({ theme }) => theme.colors.black};
-  background-image: url("https://i.blogs.es/603a33/layer-14/1366_2000.webp");
   background-size: cover;
 `;
 
 export const Form = styled(DefaultForm)`
   display: flex;
   flex-direction: column;
-  /* background-color: ${({ theme }) => theme.colors.GriffindorRedDark}; */
-  background-color: rgba(116, 0, 1, 0.5);
   border-radius: 10px;
   height: 25rem;
   width: 22.5rem;
@@ -39,19 +36,19 @@ export const InputContainer = styled.div`
 export const Input = styled.input<{ $hasError?: boolean }>`
   padding: 10px;
   margin: 10px;
-  border: none; /* eliminar el borde predeterminado */
-  border-bottom: 1px solid ${({ theme }) => theme.colors.grey900}; /* agregar borde inferior */
-  background: transparent; /* hacer el fondo transparente */
+  border: none; 
+  border-bottom: 1px solid ${({ theme }) => theme.colors.grey900}; 
+  background: transparent; 
   color: ${({ theme }) =>
-    theme.colors.white100}; /* establecer el color de texto */
+    theme.colors.white100}; 
   padding: 10px 14px;
 
   ${({ $hasError, theme }) =>
     $hasError &&
     css`
-      color: ${theme.colors.GriffindorYellow};
+      color: ${theme.colors.red};
       border-bottom-color: ${theme.colors
-        .GriffindorYellow}; /* agregar borde inferior amarillo cuando hay un error */
+        .white100}; 
     `}
 `;
 
@@ -69,14 +66,14 @@ export const FormButton = styled.button`
   margin: 16px;
   padding: 5px;
   font-family: Oswald;
-  background-color: ${({ theme }) => theme.colors.GriffindorGold};
+  background-color: ${({ theme }) => theme.colors.white100};
 `;
 
 export const FormMessage = styled.p`
   align-items: center;
   display: flex;
   justify-content: center;
-  color: ${({ theme }) => theme.colors.GriffindorYellow};
+  color: ${({ theme }) => theme.colors.white100};
 `;
 
 export const Error = styled.span`
@@ -85,7 +82,7 @@ export const Error = styled.span`
   font-weight: 500;
   margin-top: 8px;
   margin-left: 15px;
-  color: ${({ theme }) => theme.colors.GriffindorYellow};
+  color: ${({ theme }) => theme.colors.red};
 `;
 
 export const Return = styled.p`
@@ -95,10 +92,10 @@ export const Return = styled.p`
   margin-top: 8px;
   margin-left: 10px;
   text-decoration: none;
-  color: ${({ theme }) => theme.colors.GriffindorYellow};
+  color: ${({ theme }) => theme.colors.red};
 `;
 
 export const StyledLink = styled.a`
   /* text-decoration: none; */
-  color: ${({ theme }) => theme.colors.GriffindorYellow};
+  color: ${({ theme }) => theme.colors.blue};
 `;
