@@ -15,7 +15,6 @@ export const FormContainer = styled.div`
 export const Form = styled(DefaultForm)`
   display: flex;
   flex-direction: column;
-  /* background-color: ${({ theme }) => theme.colors.GriffindorRedDark}; */
   background-color: rgba(116, 0, 1, 0.5);
   border-radius: 10px;
   height: 25rem;
@@ -40,7 +39,7 @@ export const Input = styled.input<{ $hasError?: boolean }>`
   padding: 10px;
   margin: 10px;
   border: none; /* eliminar el borde predeterminado */
-  border-bottom: 1px solid ${({ theme }) => theme.colors.grey900}; /* agregar borde inferior */
+  border-bottom: 1px solid ${({ theme }) => theme.colors.white100}; /* agregar borde inferior */
   background: transparent; /* hacer el fondo transparente */
   color: ${({ theme }) =>
     theme.colors.white100}; /* establecer el color de texto */
