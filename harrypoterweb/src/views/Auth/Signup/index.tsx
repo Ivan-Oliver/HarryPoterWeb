@@ -24,7 +24,7 @@ const SignupForm: FC = () => {
     const signupError = await signup(values);
 
     if (!signupError) {
-      navigate("/landing");
+      navigate("/characters");
     } else {
       setError(signupError);
     }
