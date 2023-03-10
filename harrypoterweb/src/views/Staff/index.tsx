@@ -11,8 +11,9 @@ import {
   ButtonNext,
   ButtonPreview,
   Container,
-  DeleteButton,
   SyncButton,
+  InputSearch,
+  ButtonSearch
 } from "./styles";
 
 const Staffs: FC = () => {
@@ -20,6 +21,7 @@ const Staffs: FC = () => {
   const navigate = useNavigate();
   const [loading, setIsLoading] = useState<boolean>(false);
   const [page, setPage] = useState(1);
+  const [name, setName] = useState("")
 
   const getStaffList = useCallback(async () => {
     const staff = await getStaff();
@@ -54,6 +56,13 @@ const Staffs: FC = () => {
     navigate("/categories", { replace: true });
   }, [navigate]);
 
+  const handleClickSearch = useCallback(async () => {
+    setIsLoading(true);
+    const characters = await getStaff();
+    setStaffList(characters.filter(character => character.name.toLowerCase().includes(name.toLowerCase())));  
+    setIsLoading(false);
+  }, [name])
+
   if (loading) {
     return <h1>LOADING</h1>;
   }
@@ -63,6 +72,8 @@ const Staffs: FC = () => {
       <Navbar/>
       <ButtonBack onClick={handleGoToBack}>Go Back!</ButtonBack>
       <SyncButton onClick={handleSyncStaff}>Sync Staff</SyncButton>
+      <InputSearch type="text" value={name} placeholder="Find your favorite character..." onChange={(e) => setName(e.target.value)} />
+        <ButtonSearch onClick={handleClickSearch}>🔍</ButtonSearch>
 
       <Container>
         {staffList

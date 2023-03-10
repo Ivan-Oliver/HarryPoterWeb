@@ -24,15 +24,11 @@ const LoginForm: FC = () => {
     const loginError = await login(values);
 
     if (!loginError) {
-      navigate("/characters");
+      navigate("/categories");
     } else {
       setError(loginError);
     }
   };
-
-  const goToBack = useCallback(() => {
-    navigate("/landing");
-  }, [navigate]);
 
   return (
     <FormContainer>
