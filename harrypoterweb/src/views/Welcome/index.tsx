@@ -1,4 +1,4 @@
-import { FC, useCallback } from "react";
+import { FC, useCallback, memo } from "react";
 import { useNavigate } from "react-router-dom"; import {
   ButtonBoxes,
   ButtonLogin,
@@ -26,4 +26,4 @@ const Welcome: FC = () => {
   )
 }
 
-export default Welcome
+export default memo(Welcome)

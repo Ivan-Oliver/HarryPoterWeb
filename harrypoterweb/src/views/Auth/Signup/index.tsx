@@ -24,15 +24,11 @@ const SignupForm: FC = () => {
     const signupError = await signup(values);
 
     if (!signupError) {
-      navigate("/characters");
+      navigate("/categories");
     } else {
       setError(signupError);
     }
   };
-
-  const goToBack = useCallback(() => {
-    navigate("/landing");
-  }, [navigate]);
 
   return (
     <FormContainer>

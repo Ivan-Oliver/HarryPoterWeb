@@ -15,6 +15,8 @@ import {
   Container,
   ButtonBack,
   SyncButton,
+  InputSearch,
+  ButtonSearch
 } from "./styles";
 
 const Spells: FC = () => {
@@ -22,6 +24,7 @@ const Spells: FC = () => {
   const navigate = useNavigate();
   const [loading, setIsLoading] = useState<boolean>(false);
   const [page, setPage] = useState(1);
+  const [name, setName] = useState("")
 
   const getSpellsList = useCallback(async () => {
     const spells = await getSpells();
@@ -58,6 +61,13 @@ const Spells: FC = () => {
     setPage(page - 1);
   };
 
+  const handleClickSearch = useCallback(async () => {
+    setIsLoading(true);
+    const characters = await getSpells();
+    setSpellsList(characters.filter(character => character.name.toLowerCase().includes(name.toLowerCase())));  
+    setIsLoading(false);
+  }, [name])
+
   if (loading) {
     return <h1>LOADING</h1>;
   }
@@ -67,6 +77,8 @@ const Spells: FC = () => {
       <Navbar />
       <SyncButton onClick={handleSyncSpells}>Sync Spells</SyncButton>
       <ButtonBack onClick={handleGoToBack}>Go Back!</ButtonBack>
+      <InputSearch type="text" value={name} placeholder="Find your favorite character..." onChange={(e) => setName(e.target.value)} />
+        <ButtonSearch onClick={handleClickSearch}>🔍</ButtonSearch>
       <Container>
         {spellsList
           .slice((page - 1) * 8, (page - 1) * 8 + 8)
