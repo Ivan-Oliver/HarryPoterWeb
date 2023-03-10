@@ -19,6 +19,16 @@ export const ButtonBoxes = styled.div`
     display: flex;
 `
 
+export const ButtonLogin = styled.button`
+    
+`
+
+export const ButtonSignup = styled.button`
+    
+`
+
+
+
 
 
 
