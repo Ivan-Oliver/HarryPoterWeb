@@ -60,3 +60,7 @@ export const InputSearch = styled.input`
 `
 export const ButtonSearch = styled.button`
 `
+
+export const FotterPage = styled.footer`
+background-color: black;
+`

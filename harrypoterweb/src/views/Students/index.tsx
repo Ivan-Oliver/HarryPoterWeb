@@ -9,12 +9,14 @@ import {
 } from "../../services/api/students";
 import {
   App,
-  ButtonBack,
   ButtonContainer,
   ButtonNext,
   ButtonPreview,
   Container,
   SyncButton,
+  InputSearch,
+  ButtonSearch,
+  FotterPage
 } from "./styles";
 
 const Students: FC = () => {
@@ -22,6 +24,7 @@ const Students: FC = () => {
   const navigate = useNavigate();
   const [isloading, setIsLoading] = useState(false);
   const [page, setPage] = useState(1);
+  const [name, setName] = useState("");
 
   const getStudentsList = useCallback(async () => {
     const students = await getStudents();
@@ -39,11 +42,6 @@ const Students: FC = () => {
     getStudentsList();
   }, [getStudentsList]);
 
-
-  const handleGoToBack = useCallback(() => {
-    navigate("/categories", { replace: true });
-  }, [navigate]);
-
   const handleNextPage = () => {
     setPage(page + 1);
   };
@@ -51,6 +49,14 @@ const Students: FC = () => {
   const handlePrevPage = () => {
     setPage(page - 1);
   };
+
+  const handleClickSearch = useCallback(async () => {
+    setIsLoading(true);
+    const characters = await getStudents();
+    setStudentsList(characters.filter(character => character.name.toLowerCase().includes(name.toLowerCase())));  
+    setIsLoading(false);
+  }, [name])
+
   if (isloading) {
     return <h1>LOADING</h1>;
   }
@@ -58,11 +64,10 @@ const Students: FC = () => {
   return (
     <App>
         <Navbar/>
-      <ButtonBack onClick={handleGoToBack}>Go Back!</ButtonBack>
       <SyncButton onClick={handleSyncStudents}>Sync Students</SyncButton>
       <ButtonContainer>
-        <ButtonPreview onClick={handlePrevPage}>Previous</ButtonPreview>
-        <ButtonNext onClick={handleNextPage}>Next</ButtonNext>
+      <InputSearch type="text" value={name} placeholder="Find your favorite character..." onChange={(e) => setName(e.target.value)} />
+        <ButtonSearch onClick={handleClickSearch}>🔍</ButtonSearch>
       </ButtonContainer>
       <Container>
         {studentsList
@@ -80,10 +85,10 @@ const Students: FC = () => {
             </div>
           ))}
       </Container>
-      <ButtonContainer>
+      <FotterPage>
         <ButtonPreview onClick={handlePrevPage}>Previous</ButtonPreview>
         <ButtonNext onClick={handleNextPage}>Next</ButtonNext>
-      </ButtonContainer>
+      </FotterPage>
     </App>
   );
 };

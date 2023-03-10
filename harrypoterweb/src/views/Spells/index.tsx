@@ -9,11 +9,10 @@ import {
 } from "../../services/api/spells";
 import {
   App,
-  ButtonContainer,
+  FotterPage,
   ButtonNext,
   ButtonPreview,
   Container,
-  ButtonBack,
   SyncButton,
   InputSearch,
   ButtonSearch
@@ -30,10 +29,6 @@ const Spells: FC = () => {
     const spells = await getSpells();
     setSpellsList(spells);
   }, []);
-
-  const handleGoToBack = useCallback(() => {
-    navigate("/categories", { replace: true });
-  }, [navigate]);
 
   const handleSyncSpells = useCallback(async () => {
     await syncSpells();
@@ -76,7 +71,6 @@ const Spells: FC = () => {
     <App>
       <Navbar />
       <SyncButton onClick={handleSyncSpells}>Sync Spells</SyncButton>
-      <ButtonBack onClick={handleGoToBack}>Go Back!</ButtonBack>
       <InputSearch type="text" value={name} placeholder="Find your favorite character..." onChange={(e) => setName(e.target.value)} />
         <ButtonSearch onClick={handleClickSearch}>🔍</ButtonSearch>
       <Container>
@@ -95,10 +89,11 @@ const Spells: FC = () => {
             </div>
           ))}
       </Container>
-      <ButtonContainer>
+      <FotterPage>
         <ButtonPreview onClick={handlePrevPage}>Previous</ButtonPreview>
         <ButtonNext onClick={handleNextPage}>Next</ButtonNext>
-      </ButtonContainer>
+      </FotterPage>
+      
     </App>
   );
 };

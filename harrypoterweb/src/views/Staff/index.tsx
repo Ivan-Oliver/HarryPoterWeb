@@ -6,8 +6,7 @@ import { StaffResponse } from "../../services/api/staff";
 import { getStaff, syncStaff } from "../../services/api/staff";
 import {
   App,
-  ButtonBack,
-  ButtonContainer,
+  FotterPage,
   ButtonNext,
   ButtonPreview,
   Container,
@@ -52,9 +51,6 @@ const Staffs: FC = () => {
   const handlePrevPage = () => {
     setPage(page - 1);
   };
-  const handleGoToBack = useCallback(() => {
-    navigate("/categories", { replace: true });
-  }, [navigate]);
 
   const handleClickSearch = useCallback(async () => {
     setIsLoading(true);
@@ -70,7 +66,6 @@ const Staffs: FC = () => {
   return (
     <App>
       <Navbar/>
-      <ButtonBack onClick={handleGoToBack}>Go Back!</ButtonBack>
       <SyncButton onClick={handleSyncStaff}>Sync Staff</SyncButton>
       <InputSearch type="text" value={name} placeholder="Find your favorite character..." onChange={(e) => setName(e.target.value)} />
         <ButtonSearch onClick={handleClickSearch}>🔍</ButtonSearch>
@@ -93,10 +88,10 @@ const Staffs: FC = () => {
             </div>
           ))}
       </Container>
-      <ButtonContainer>
+      <FotterPage>
         <ButtonPreview onClick={handlePrevPage}>Previous</ButtonPreview>
         <ButtonNext onClick={handleNextPage}>Next</ButtonNext>
-      </ButtonContainer>
+      </FotterPage>
     </App>
   );
 };

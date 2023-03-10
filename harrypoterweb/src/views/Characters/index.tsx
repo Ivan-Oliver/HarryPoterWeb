@@ -9,9 +9,7 @@ import {
 } from "../../services/api/characters";
 import {
   App,
-  BackContainer,
-  ButtonBack,
-  ButtonContainer,
+  FotterPage,
   ButtonNext,
   ButtonPreview,
   Container,
@@ -38,9 +36,6 @@ const Characters: FC = () => {
     getCharactersList();
   }, []);
 
-  const handleGoToBack = useCallback(() => {
-    navigate("/categories");
-  }, [navigate]);
 
   useEffect(() => {
     getCharactersList();
@@ -67,9 +62,6 @@ const Characters: FC = () => {
   return (
     <App>
     <Navbar/>
-      <BackContainer>
-        <ButtonBack onClick={handleGoToBack}>Go Back!</ButtonBack>
-      </BackContainer>
       <SyncButton onClick={handleSyncApi}>Sync Characters</SyncButton>
       <InputSearch type="text" value={name} placeholder="Find your favorite character..." onChange={(e) => setName(e.target.value)} />
         <ButtonSearch onClick={handleClickSearch}>🔍</ButtonSearch>
@@ -89,10 +81,10 @@ const Characters: FC = () => {
             </div>
           ))}
       </Container>
-      <ButtonContainer>
+      <FotterPage>
         <ButtonPreview onClick={handlePrevPage}>Previous</ButtonPreview>
         <ButtonNext onClick={handleNextPage}>Next</ButtonNext>
-      </ButtonContainer>
+      </FotterPage>
     </App>
   );
 };

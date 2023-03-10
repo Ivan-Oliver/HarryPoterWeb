@@ -21,7 +21,7 @@ const Router: FC = () => {
         const token = getToken();
         const location = useLocation();
     
-        if (!token || token === null) {
+        if (!token) {
           return <Navigate to="/" replace state={{ from: location }} />;
         }
         return children;
@@ -50,7 +50,7 @@ const Router: FC = () => {
             <Route path='/categories' element={<Categories/>}/>
             <Route path='/signup' element={<SignupForm/>}/>
             <Route path='/login' element={<LoginForm/>}/>
-            <Route path='/characters' element={<Characters/>}/>
+            <Route path='/characters' element={<ProtectedRoutes><Characters/></ProtectedRoutes>}/>
             <Route path='/spells' element={<Spells/>}/>
             <Route path='/staff' element={<Staffs/>}/>
             <Route path='/students' element={<Students/>}/>
