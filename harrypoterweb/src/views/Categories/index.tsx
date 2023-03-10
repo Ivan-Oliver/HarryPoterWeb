@@ -5,7 +5,7 @@ import {
   ButtonCharacters,
   ButtonStudents,
   ButtonStaffs,
-  ButtonSpells
+  ButtonSpells,
 } from './styles'
 
 const Categories: FC = () => {
