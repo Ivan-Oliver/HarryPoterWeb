@@ -3,7 +3,6 @@ import { Props } from './types'
 import { useLocation, useNavigate } from 'react-router-dom';
 import { FaDiscord, FaBars, FaUserAlt } from 'react-icons/fa';
 import { RiLogoutBoxLine } from 'react-icons/ri';
-import { GoSync } from 'react-icons/go';
 import { BiCategory } from 'react-icons/bi';
 import { IconContext } from 'react-icons';
 import { Container, Wrapper, LogoContainer, Menu, MenuItem, Title, MenuItemLink, MobileIcon, ButtonLogo} from './styles'
