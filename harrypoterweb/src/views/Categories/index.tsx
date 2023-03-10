@@ -16,7 +16,7 @@ const Categories: FC = () => {
       <ButtonCharacters to="/characters">Characters</ButtonCharacters>
       <ButtonStudents to="/students">Students</ButtonStudents>
       <ButtonStaffs to="/staff">Staff</ButtonStaffs>
-      <ButtonSpells to="spells">Spells</ButtonSpells>
+      <ButtonSpells to="/spells">Spells</ButtonSpells>
       </ButtonBoxes>
     </WelcomeContainer>
   )

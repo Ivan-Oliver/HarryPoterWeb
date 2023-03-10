@@ -28,9 +28,7 @@ const Card: FC<Props> = ({
 
       {type !== "edit" ? (
         <>
-          <Description>
-            Name:<DescriptionApi>{name}</DescriptionApi>
-          </Description>
+          <DescriptionApi>Name:{name}</DescriptionApi>
           <DescriptionApi>Hogwarts house:{house}</DescriptionApi>
           <DetailsButton to={`/${type}/${id}`}>View {type}</DetailsButton>
         </>
@@ -43,7 +41,7 @@ const Card: FC<Props> = ({
           <Description>Patronus: {patronus}</Description>
           <Description>Actor: {actor}</Description>
           <Description>Id: {id}</Description>
-          <DetailsButton to={`/${type}/${id}`}>Edit {type}</DetailsButton>
+          <DetailsButton to={`/${type}/${id}`}>Edit{type}</DetailsButton>
         </>
       )}
     </Container>
