@@ -27,3 +27,8 @@ export const ButtonContainer = styled.div`
 export const ButtonBack = styled.button`
 
 `;
+
+export const InputSearch = styled.input`
+`
+export const ButtonSearch = styled.button`
+`
