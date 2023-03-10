@@ -13,7 +13,7 @@ import {
   ButtonNext,
   ButtonPreview,
   Container,
-  DeleteButton,
+  ButtonBack,
   SyncButton,
 } from "./styles";
 
@@ -27,6 +27,10 @@ const Spells: FC = () => {
     const spells = await getSpells();
     setSpellsList(spells);
   }, []);
+
+  const handleGoToBack = useCallback(() => {
+    navigate("/categories", { replace: true });
+  }, [navigate]);
 
   const handleSyncSpells = useCallback(async () => {
     await syncSpells();
@@ -60,23 +64,22 @@ const Spells: FC = () => {
 
   return (
     <App>
-        <Navbar/>
+      <Navbar />
       <SyncButton onClick={handleSyncSpells}>Sync Spells</SyncButton>
-     
+      <ButtonBack onClick={handleGoToBack}>Go Back!</ButtonBack>
       <Container>
         {spellsList
           .slice((page - 1) * 8, (page - 1) * 8 + 8)
           .map((spell, index) => (
+
             <div key={index}>
               <CardSpells
                 spellId={spell.id}
                 name={spell.name}
                 description={spell.description}
                 onClick={goToEdit}
+
               />
-              {/* <DeleteButton onClick={() => (spell.id)}>
-                DELETE
-              </DeleteButton> */}
             </div>
           ))}
       </Container>

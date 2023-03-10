@@ -2,14 +2,13 @@ import { FC } from "react";
 import {
   Spellcardinner,
   Spellcardshape,
-  DetailsButton,
   Description,
   Container,
   Title
 } from "./styles";
 import { Props } from "./types";
 
-const CardSpells: FC<Props> = ({ name, spellId, description, onClick }) => {
+const CardSpells: FC<Props> = ({ name, description, onClick }) => {
   return (
       <Spellcardinner>
         <Spellcardshape>
@@ -18,7 +17,6 @@ const CardSpells: FC<Props> = ({ name, spellId, description, onClick }) => {
           <Title>Name: {name}</Title>
           <Description>Description: {description}</Description>
         </Container>
-        {/* <DetailsButton onClick={() => onClick(spellId)}>Edit</DetailsButton> */}
     
       </Spellcardinner>
   );

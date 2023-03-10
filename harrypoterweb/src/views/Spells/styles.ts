@@ -51,3 +51,7 @@ export const DeleteButton = styled.button`
   margin: 10px;
   cursor: pointer;
 `;
+
+export const ButtonBack = styled.button`
+ 
+`;

@@ -9,8 +9,7 @@ import {
 import { Props } from "./types";
 
 const Card: FC<Props> = ({
-  name,
-  house,
+ 
   image,
   id,
   species,
@@ -26,17 +25,7 @@ const Card: FC<Props> = ({
     <Container>
       <Image src={image} />
 
-      {type !== "edit" ? (
-        <>
-          <Description>
-            Name:&nbsp;&nbsp;<DescriptionApi>{name}</DescriptionApi>
-          </Description>
-          <Description>
-            Hogwarts house:&nbsp;&nbsp;<DescriptionApi>{house}</DescriptionApi>
-          </Description>
-          <DetailsButton to={`/${type}/${id}`}>View {type}</DetailsButton>
-        </>
-      ) : (
+      
         <>
           <Description>Specie: {species}</Description>
           <Description>Is a wizard? {wizard}</Description>
@@ -47,7 +36,7 @@ const Card: FC<Props> = ({
           <Description>Id: {id}</Description>
           <DetailsButton to={`/${type}/${id}`}>Edit {type}</DetailsButton>
         </>
-      )}
+      
     </Container>
   );
 };
