@@ -13,7 +13,6 @@ import {
   ButtonNext,
   ButtonPreview,
   Container,
-  DeleteButton,
   SyncButton,
 } from "./styles";
 
@@ -74,9 +73,6 @@ const Spells: FC = () => {
                 description={spell.description}
                 onClick={goToEdit}
               />
-              {/* <DeleteButton onClick={() => (spell.id)}>
-                DELETE
-              </DeleteButton> */}
             </div>
           ))}
       </Container>

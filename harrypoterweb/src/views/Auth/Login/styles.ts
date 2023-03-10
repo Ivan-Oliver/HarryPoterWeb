@@ -20,7 +20,6 @@ export const Form = styled(DefaultForm)`
   margin-top: 6.25rem;
   margin-left: 2rem;
   margin-right: 1.7rem;
-  font-family: Oswald;
   color: ${({ theme }) => theme.colors.white100};
 `;
 
@@ -65,7 +64,6 @@ export const FormButton = styled.button`
   cursor: pointer;
   margin: 16px;
   padding: 5px;
-  font-family: Oswald;
   background-color: ${({ theme }) => theme.colors.white100};
 `;
 
