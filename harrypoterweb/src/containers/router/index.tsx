@@ -6,9 +6,7 @@ import Categories from '../../views/Categories';
 import Welcome from "../../views/Welcome"
 import Characters from "../../views/Characters";
 import Spells from "../../views/Spells";
-
-import Staff from '../../views/Staff';
-=======
+import Staffs from '../../views/Staff';
 import Students from '../../views/Students';
 import Profile from "../../views/Profile";
 
@@ -26,12 +24,7 @@ const Router: FC = () => {
             <Route path='/login' element={<LoginForm/>}/>
             <Route path='/characters' element={<Characters/>}/>
             <Route path='/spells' element={<Spells/>}/>
-
-            <Route path='/staff' element={<Staff/>}/>
-
-
-
-
+            <Route path='/staffs' element={<Staffs/>}/>
             <Route path='/students' element={<Students/>}/>
             <Route path='/profile' element={<Profile/>}/>
 
