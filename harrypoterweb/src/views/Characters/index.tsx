@@ -16,12 +16,15 @@ import {
   ButtonPreview,
   Container,
   SyncButton,
+  InputSearch,
+  ButtonSearch
 } from "./styles";
 
 const Characters: FC = () => {
   const [characterList, setCharacterList] = useState<CharacterResponse[]>([]);
   const navigate = useNavigate();
   const [isloading, setIsLoading] = useState<boolean>(false);
+  const [name, setName] = useState("")
   const [page, setPage] = useState(1);
 
   const getCharactersList = useCallback(async () => {
@@ -51,6 +54,13 @@ const Characters: FC = () => {
     setPage(page - 1);
   };
 
+  const handleClickSearch = useCallback(async () => {
+    setIsLoading(true);
+    const characters = await getCharacters();
+    setCharacterList(characters.filter(character => character.name.toLowerCase().includes(name.toLowerCase())));  
+    setIsLoading(false);
+  }, [name])
+
   if (isloading) {
     return <h1>LOADING</h1>;
   }
@@ -61,6 +71,8 @@ const Characters: FC = () => {
         <ButtonBack onClick={handleGoToBack}>Go Back!</ButtonBack>
       </BackContainer>
       <SyncButton onClick={handleSyncApi}>Sync Characters</SyncButton>
+      <InputSearch type="text" value={name} placeholder="Find your favorite character..." onChange={(e) => setName(e.target.value)} />
+        <ButtonSearch onClick={handleClickSearch}>🔍</ButtonSearch>
       <Container>
         {characterList
           .slice((page - 1) * 8, (page - 1) * 8 + 8)
