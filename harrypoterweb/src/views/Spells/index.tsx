@@ -42,7 +42,7 @@ const Spells: FC = () => {
     getSpellsList();
   }, [getSpellsList]);
 
-  const goToEdit = useCallback(
+  const handleGoToEdit = useCallback(
     (spellId: string) => {
       console.log("G TO DETAILS", spellId);
       navigate(`/spells/${spellId}`, { replace: true });
@@ -77,7 +77,7 @@ const Spells: FC = () => {
                 spellId={spell.id}
                 name={spell.name}
                 description={spell.description}
-                onClick={goToEdit}
+                onClick={handleGoToEdit}
 
               />
             </div>

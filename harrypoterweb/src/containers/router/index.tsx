@@ -24,7 +24,7 @@ const Router: FC = () => {
             <Route path='/login' element={<LoginForm/>}/>
             <Route path='/characters' element={<Characters/>}/>
             <Route path='/spells' element={<Spells/>}/>
-            <Route path='/staffs' element={<Staffs/>}/>
+            <Route path='/staff' element={<Staffs/>}/>
             <Route path='/students' element={<Students/>}/>
             <Route path='/profile' element={<Profile/>}/>
 

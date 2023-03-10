@@ -1,7 +1,7 @@
 import { FC, memo, useCallback, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { BiArrowBack } from 'react-icons/bi';
-import Profiles from './assets/Profile.jpg';
+import Profiles from './assets/unnamed.jpg';
 import { getToken } from "../../services/storage";
 import {Card, Header,Imagen, Section,ContainerProfile, EmailContainer, IdContainer, ButtonBack, Footer } from "./styles";
 

@@ -26,12 +26,10 @@ export const getStaff = async () => {
   try {
     const token = getToken();
     const response = await fetch(BASE_API_URL, {
-      method: 'GET',
       headers: {
         Authorization: `Bearer ${token}`,
       },
     });
-    console.log(response)
     const data: StaffResponse[] = await response.json();
     return data;
   } catch (error) {
