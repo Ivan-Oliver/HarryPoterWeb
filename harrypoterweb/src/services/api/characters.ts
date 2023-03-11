@@ -70,3 +70,19 @@ export const getCharacters = async () => {
     }
   };
   
+  export const getCharacterById = async (
+    id: string
+  ): Promise<Character | null> => {
+    try {
+      const token = getToken();
+      const response = await fetch(`${Base_Url_Api}/${id}`, {
+        method: "GET",
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      const data: CharacterResponse = await response.json();
+      return normalizeCharacter(data);
+    } catch (error) {
+      console.log((error as Error).message);
+    }
+    return null;
+  };

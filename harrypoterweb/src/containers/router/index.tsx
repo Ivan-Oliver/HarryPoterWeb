@@ -10,6 +10,7 @@ import Spells from "../../views/Spells";
 import Staffs from '../../views/Staff';
 import Students from '../../views/Students';
 import Profile from "../../views/Profile";
+import Randoms from "../../views/Randoms";
 
 
 
@@ -55,6 +56,8 @@ const Router: FC = () => {
             <Route path='/staff' element={<Staffs/>}/>
             <Route path='/students' element={<Students/>}/>
             <Route path='/profile' element={<Profile/>}/>
+            <Route path='/randoms' element={<Randoms/>}/>
+
 
         </Routes>
         </BrowserRouter>
