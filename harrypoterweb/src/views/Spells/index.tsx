@@ -36,6 +36,17 @@ const Spells: FC = () => {
     getSpellsList();
   }, []);
 
+  const handleClickSearch = useCallback(async () => {
+    setIsLoading(true);
+    const characters = await getSpells();
+    setSpellsList(characters.filter(character => character.name.toLowerCase().includes(name.toLowerCase())));  
+    setIsLoading(false);
+  }, [name])
+
+  useEffect(() => {
+    getSpellsList();
+  }, [getSpellsList]);
+
   const handleGoToEdit = useCallback(
     (spellId: string) => {
       console.log("G TO DETAILS", spellId);
@@ -44,19 +55,6 @@ const Spells: FC = () => {
     [navigate]
   );
 
-  const handleClickSearch = useCallback(async () => {
-    setIsLoading(true);
-    const characters = await getSpells();
-    setSpellsList(characters.filter(character => character.name.toLowerCase().includes(name.toLowerCase())));  
-    setIsLoading(false);
-  }, [name])
-
-
-  useEffect(() => {
-    getSpellsList();
-  }, [getSpellsList]);
-
- 
   const handleNextPage = () => {
     setPage(page + 1);
   };
@@ -64,8 +62,6 @@ const Spells: FC = () => {
   const handlePrevPage = () => {
     setPage(page - 1);
   };
-
-  
 
   if (loading) {
     return <h1>LOADING</h1>;

@@ -64,3 +64,5 @@ export const ButtonSearch = styled.button`
 export const FotterPage = styled.footer`
 background-color: black;
 `
+export const ButtonRemove = styled.button`
+`
