@@ -1,12 +1,11 @@
 import { FC, memo, useCallback, useEffect, useState } from "react";
+import { Character } from "../../models/characters";
 import { useNavigate } from "react-router-dom";
 import Navbar from "../../components/Navbar";
 import Card from "../../components/Card";
 import {
   getCharacters,
-  syncCharacters,
-  CharacterResponse
-} from "../../services/api/characters";
+  syncCharacters} from "../../services/api/characters";
 import {
   App,
   FotterPage,
@@ -19,7 +18,7 @@ import {
 } from "./styles";
 
 const Characters: FC = () => {
-  const [characterList, setCharacterList] = useState<CharacterResponse[]>([]);
+  const [characterList, setCharacterList] = useState<Character[]>([]);
   const navigate = useNavigate();
   const [isloading, setIsLoading] = useState<boolean>(false);
   const [name, setName] = useState("")

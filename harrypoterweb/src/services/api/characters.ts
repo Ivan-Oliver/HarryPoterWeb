@@ -1,4 +1,7 @@
 import { getToken } from "../storage";
+import {
+  normalizeCharacter
+} from "../../models/characters";
 
 export type CharacterResponse = {
     id: string;
@@ -31,7 +34,7 @@ export const getCharacters = async () => {
         },
       });
       const data: CharacterResponse[] = await response.json();
-      return data;
+      return data.map(normalizeCharacter);
     } catch (error) {
       console.log((error as Error).message);
     }
