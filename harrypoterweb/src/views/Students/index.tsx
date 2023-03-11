@@ -4,6 +4,7 @@ import Card from "../../components/Card";
 import Navbar from "../../components/Navbar";
 import {
   getStudents,
+  removeStudent,
   StudentResponse,
   syncStudents,
 } from "../../services/api/students";
@@ -16,7 +17,8 @@ import {
   SyncButton,
   InputSearch,
   ButtonSearch,
-  FotterPage
+  FotterPage,
+  ButtonRemove
 } from "./styles";
 
 const Students: FC = () => {
@@ -43,6 +45,14 @@ const Students: FC = () => {
     setStudentsList(characters.filter(character => character.name.toLowerCase().includes(name.toLowerCase())));  
     setIsLoading(false);
   }, [name])
+
+  const handleRemoveStudent = useCallback(async (id: string) => {
+    setIsLoading(true);
+    await removeStudent(id);
+    setStudentsList((prev) => prev.filter((item) => item.id !== id));
+    setIsLoading(false);
+  }, []);
+
 
   useEffect(() => {
     getStudentsList();
@@ -82,7 +92,8 @@ const Students: FC = () => {
                 id={student.id}
                 type="students"
               />
-              
+              <ButtonRemove onClick={() => handleRemoveStudent(student.id)}>DELETE</ButtonRemove>
+
             </div>
           ))}
       </Container>

@@ -2,8 +2,7 @@ import { FC, memo, useCallback, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Card from "../../components/Card";
 import Navbar from "../../components/Navbar";
-import { StaffResponse } from "../../services/api/staff";
-import { getStaff, syncStaff } from "../../services/api/staff";
+import { getStaff, syncStaff,StaffResponse, removeStaff } from "../../services/api/staff";
 import {
   App,
   FotterPage,
@@ -12,7 +11,8 @@ import {
   Container,
   SyncButton,
   InputSearch,
-  ButtonSearch
+  ButtonSearch,
+  ButtonRemove
 } from "./styles";
 
 const Staffs: FC = () => {
@@ -40,12 +40,19 @@ const Staffs: FC = () => {
     setIsLoading(false);
   }, [name])
   
-  const handleGoToDetails = useCallback(
-    (staffId: string) => {
-      navigate(`/staff/${staffId}`, { replace: true });
-    },
-    [navigate]
-  );
+  // const handleGoToDetails = useCallback(
+  //   (staffId: string) => {
+  //     navigate(`/staff/${staffId}`, { replace: true });
+  //   },
+  //   [navigate]
+  // );
+
+  const handleRemoveStaff = useCallback(async (id: string) => {
+    setIsLoading(true);
+    await removeStaff(id);
+    setStaffList((prev) => prev.filter((item) => item.id !== id));
+    setIsLoading(false);
+  }, []);
 
   useEffect(() => {
     getStaffList();
@@ -84,11 +91,12 @@ const Staffs: FC = () => {
                 image={staff.image}
                 name={staff.name}
                 house={staff.house}
-                onClick={handleGoToDetails}
+                // onClick={handleGoToDetails}
                 id={staff.id}
                 type="staff"
               />
-              
+            <ButtonRemove onClick={() => handleRemoveStaff(staff.id)}>DELETE</ButtonRemove>
+
             </div>
           ))}
       </Container>

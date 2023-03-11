@@ -20,12 +20,12 @@ export type StaffResponse = {
   updatedAt: Date;
 };
 
-const BASE_API_URL = "http://localhost:8000/staff";
+const Base_Url_Api = "http://localhost:8000/staff";
 
 export const getStaff = async () => {
   try {
     const token = getToken();
-    const response = await fetch(BASE_API_URL, {
+    const response = await fetch(Base_Url_Api, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -43,6 +43,21 @@ export const syncStaff = async () => {
     const token = getToken();
     await fetch("http://localhost:8000/syncStaff", {
       headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+  } catch (error) {
+    console.log((error as Error).message);
+  }
+};
+
+export const removeStaff = async (id: string) => {
+  try {
+    const token = getToken();
+    await fetch(`${Base_Url_Api}/${id}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,
       },
     });

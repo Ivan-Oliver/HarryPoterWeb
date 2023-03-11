@@ -1,11 +1,11 @@
 import { setToken } from "../storage";
 
-const BASE_API_URL = "http://localhost:8000/auth";
+const Base_Url_Api = "http://localhost:8000/auth";
 
 export const login = async (values: { email: string; password: string }) => {
   let error = "";
   try {
-    const response = await fetch(`${BASE_API_URL}/login`, {
+    const response = await fetch(`${Base_Url_Api}/login`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -33,7 +33,7 @@ export const login = async (values: { email: string; password: string }) => {
 export const signup = async (values: { email: string; password: string }) => {
   let error = "";
   try {
-    const response = await fetch(`${BASE_API_URL}/signup`, {
+    const response = await fetch(`${Base_Url_Api}/signup`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

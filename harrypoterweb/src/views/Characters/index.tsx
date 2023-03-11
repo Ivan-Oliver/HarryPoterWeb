@@ -83,7 +83,7 @@ const Characters: FC = () => {
                 id={character.id}
                 type="characters"
               />
-              <ButtonRemove onClick={() => handleRemoveCharacter(character.id)}> DELETE</ButtonRemove>
+              <ButtonRemove onClick={() => handleRemoveCharacter(character.id)}>DELETE</ButtonRemove>
             </div>
           ))}
       </Container>

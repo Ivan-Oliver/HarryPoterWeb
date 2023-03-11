@@ -1,6 +1,9 @@
 import { getToken } from "../storage";
-import { normalizeCharacter } from "../../models/characters";
-
+import {
+  Character,
+  CharacterInput,
+  normalizeCharacter,
+} from "../../models/characters";
 export type CharacterResponse = {
     id: string;
     characterId: string;
