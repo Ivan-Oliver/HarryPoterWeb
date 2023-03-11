@@ -4,6 +4,7 @@ import { BiArrowBack } from 'react-icons/bi';
 import Profiles from '../../assets/unnamed.jpg';
 import { getToken } from "../../services/storage";
 import {Card, Header,Imagen, Section,ContainerProfile, EmailContainer, IdContainer, ButtonBack, Footer } from "./styles";
+import Navbar from "../../components/Navbar";
 
 const Profile: FC = () => {
     const[userData, setUserData] = useState<{ id: string, email: string } | null>(null);
@@ -37,7 +38,7 @@ const Profile: FC = () => {
 
     return (
         <>     
-    
+    <Navbar/>
         <ButtonBack onClick={handleBackCategories}><BiArrowBack/></ButtonBack>
             <Card>
                 <Header>
