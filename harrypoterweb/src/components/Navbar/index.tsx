@@ -37,6 +37,11 @@ const Navbar: FC<Props> = ({ type = 'list' }) => {
         navigate("/randoms");
       }, [navigate]);
 
+      const handleGoToPlayerMusic = useCallback(() => {
+        navigate("/playermusic");
+      }, [navigate]);
+
+
 
     return (
         <Container>
@@ -52,6 +57,9 @@ const Navbar: FC<Props> = ({ type = 'list' }) => {
                     <Menu $open={showMobileMenu}>
                         <MenuItem>
                             <MenuItemLink onClick={handleLogout}><RiLogoutBoxLine/>Logout</MenuItemLink>
+                        </MenuItem>
+                        <MenuItem>
+                            <MenuItemLink onClick={handleGoToPlayerMusic}> <FaGamepad/>Musica </MenuItemLink>
                         </MenuItem>
                         <MenuItem>
                             <MenuItemLink onClick={handleGoToGame}> <FaGamepad/>Jugar </MenuItemLink>

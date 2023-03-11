@@ -11,6 +11,7 @@ import Staffs from '../../views/Staff';
 import Students from '../../views/Students';
 import Profile from "../../views/Profile";
 import Randoms from "../../views/Randoms";
+import PlayerMusic from '../../views/PlayerMusic';
 
 
 
@@ -57,6 +58,8 @@ const Router: FC = () => {
             <Route path='/students' element={<Students/>}/>
             <Route path='/profile' element={<Profile/>}/>
             <Route path='/randoms' element={<Randoms/>}/>
+            <Route path='/playermusic' element={<PlayerMusic/>}/>
+
 
 
         </Routes>
