@@ -1,7 +1,5 @@
 import { getToken } from "../storage";
-import {
-  normalizeCharacter
-} from "../../models/characters";
+import { normalizeCharacter } from "../../models/characters";
 
 export type CharacterResponse = {
     id: string;
@@ -53,3 +51,19 @@ export const getCharacters = async () => {
       console.log((error as Error).message);
     }
   };
+
+  export const removeCharacter = async (id: string) => {
+    try {
+      const token = getToken();
+      await fetch(`${Base_Url_Api}/${id}`, {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      });
+    } catch (error) {
+      console.log((error as Error).message);
+    }
+  };
+  
