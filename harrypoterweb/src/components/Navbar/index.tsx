@@ -1,7 +1,7 @@
 import { FC, useCallback, useState } from 'react'
 import { Props } from './types'
 import { useLocation, useNavigate } from 'react-router-dom';
-import { FaDiscord, FaBars, FaUserAlt } from 'react-icons/fa';
+import { FaDiscord, FaBars, FaUserAlt,FaGamepad} from 'react-icons/fa';
 import { RiLogoutBoxLine } from 'react-icons/ri';
 import { BiCategory } from 'react-icons/bi';
 import { IconContext } from 'react-icons';
@@ -33,6 +33,10 @@ const Navbar: FC<Props> = ({ type = 'list' }) => {
         navigate('/welcome')
     }, [navigate])
 
+    const handleGoToGame = useCallback(() => {
+        navigate("/randoms");
+      }, [navigate]);
+
 
     return (
         <Container>
@@ -45,10 +49,12 @@ const Navbar: FC<Props> = ({ type = 'list' }) => {
                     <MobileIcon onClick={() => setShowMobileMenu(!showMobileMenu)}>
                         <FaBars />
                     </MobileIcon>
-                    
                     <Menu $open={showMobileMenu}>
                         <MenuItem>
                             <MenuItemLink onClick={handleLogout}><RiLogoutBoxLine/>Logout</MenuItemLink>
+                        </MenuItem>
+                        <MenuItem>
+                            <MenuItemLink onClick={handleGoToGame}> <FaGamepad/>Jugar </MenuItemLink>
                         </MenuItem>
                         <MenuItem>
                             <MenuItemLink onClick={handleBackCategories}><BiCategory/>Categories </MenuItemLink>

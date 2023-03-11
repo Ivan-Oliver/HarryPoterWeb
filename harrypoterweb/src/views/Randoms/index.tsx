@@ -7,14 +7,11 @@ import { useNavigate } from "react-router-dom"; import {
 import { Character } from "../../models/characters";
 import { getCharacters } from "../../services/api/characters";
 import Card from "../../components/Card";
+import Navbar from "../../components/Navbar";
 
 const Randoms: FC = () => {
   const [character, setCharacter] = useState<Character | null>();
   const navigate = useNavigate();
-
-  const handleGoToLogin = useCallback(() => {
-    navigate("/login");
-  }, [navigate]);
 
   const handleRandomCharacter = useCallback(async () => {
     const characters = await getCharacters()
@@ -33,6 +30,8 @@ const Randoms: FC = () => {
   }
 
   return (
+    <>
+    <Navbar/>
     <WelcomeContainer>
       <ButtonBoxes>
         <ButtonLogin onClick={handleRandomCharacter}>Jugar</ButtonLogin>
@@ -46,6 +45,7 @@ const Randoms: FC = () => {
         />
       </div>
     </WelcomeContainer>
+    </>
   )
 }
 
