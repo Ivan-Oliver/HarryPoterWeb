@@ -4,8 +4,8 @@ import { useNavigate } from "react-router-dom";
 import Navbar from "../../components/Navbar";
 import Card from "../../components/Card";
 import {
-  getCharacters,
-  syncCharacters} from "../../services/api/characters";
+  getCharacters, syncCharacters, removeCharacter
+} from "../../services/api/characters";
 import {
   App,
   FotterPage,
@@ -14,7 +14,8 @@ import {
   Container,
   SyncButton,
   InputSearch,
-  ButtonSearch
+  ButtonSearch,
+  ButtonRemove
 } from "./styles";
 
 const Characters: FC = () => {
@@ -51,19 +52,26 @@ const Characters: FC = () => {
   const handleClickSearch = useCallback(async () => {
     setIsLoading(true);
     const characters = await getCharacters();
-    setCharacterList(characters.filter(character => character.name.toLowerCase().includes(name.toLowerCase())));  
+    setCharacterList(characters.filter(character => character.name.toLowerCase().includes(name.toLowerCase())));
     setIsLoading(false);
   }, [name])
+
+  const handleRemoveCharacter = useCallback(async (id: string) => {
+    setIsLoading(true);
+    await removeCharacter(id);
+    setCharacterList((prev) => prev.filter((item) => item.id !== id));
+    setIsLoading(false);
+  }, []);
 
   if (isloading) {
     return <h1>LOADING</h1>;
   }
   return (
     <App>
-    <Navbar/>
+      <Navbar />
       <SyncButton onClick={handleSyncApi}>Sync Characters</SyncButton>
       <InputSearch type="text" value={name} placeholder="Find your favorite character..." onChange={(e) => setName(e.target.value)} />
-        <ButtonSearch onClick={handleClickSearch}>🔍</ButtonSearch>
+      <ButtonSearch onClick={handleClickSearch}>🔍</ButtonSearch>
       <Container>
         {characterList
           .slice((page - 1) * 8, (page - 1) * 8 + 8)
@@ -76,7 +84,7 @@ const Characters: FC = () => {
                 id={character.id}
                 type="characters"
               />
-              
+              <ButtonRemove onClick={() => handleRemoveCharacter(character.id)}> DELETE</ButtonRemove>
             </div>
           ))}
       </Container>
