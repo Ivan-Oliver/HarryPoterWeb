@@ -36,19 +36,6 @@ const Characters: FC = () => {
     getCharactersList();
   }, []);
 
-
-  useEffect(() => {
-    getCharactersList();
-  }, [getCharactersList]);
-
-  const handleNextPage = () => {
-    setPage(page + 1);
-  };
-
-  const handlePrevPage = () => {
-    setPage(page - 1);
-  };
-
   const handleClickSearch = useCallback(async () => {
     setIsLoading(true);
     const characters = await getCharacters();
@@ -62,6 +49,18 @@ const Characters: FC = () => {
     setCharacterList((prev) => prev.filter((item) => item.id !== id));
     setIsLoading(false);
   }, []);
+
+  useEffect(() => {
+    getCharactersList();
+  }, [getCharactersList]);
+
+  const handleNextPage = () => {
+    setPage(page + 1);
+  };
+
+  const handlePrevPage = () => {
+    setPage(page - 1);
+  };
 
   if (isloading) {
     return <h1>LOADING</h1>;

@@ -16,6 +16,7 @@ const Welcome: FC = () => {
   const handleGoToSignup = useCallback(() => {
     navigate("/signup");
   }, [navigate]);
+
   return (
     <WelcomeContainer>
       <ButtonBoxes>

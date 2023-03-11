@@ -33,16 +33,25 @@ const Staffs: FC = () => {
     getStaffList();
   }, []);
 
-  useEffect(() => {
-    getStaffList();
-  }, [getStaffList]);
-
+  const handleClickSearch = useCallback(async () => {
+    setIsLoading(true);
+    const characters = await getStaff();
+    setStaffList(characters.filter(character => character.name.toLowerCase().includes(name.toLowerCase())));  
+    setIsLoading(false);
+  }, [name])
+  
   const handleGoToDetails = useCallback(
     (staffId: string) => {
       navigate(`/staff/${staffId}`, { replace: true });
     },
     [navigate]
   );
+
+  useEffect(() => {
+    getStaffList();
+  }, [getStaffList]);
+
+  
 
   const handleNextPage = () => {
     setPage(page + 1);
@@ -52,12 +61,7 @@ const Staffs: FC = () => {
     setPage(page - 1);
   };
 
-  const handleClickSearch = useCallback(async () => {
-    setIsLoading(true);
-    const characters = await getStaff();
-    setStaffList(characters.filter(character => character.name.toLowerCase().includes(name.toLowerCase())));  
-    setIsLoading(false);
-  }, [name])
+  
 
   if (loading) {
     return <h1>LOADING</h1>;

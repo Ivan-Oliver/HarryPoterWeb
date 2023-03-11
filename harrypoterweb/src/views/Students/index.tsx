@@ -37,6 +37,12 @@ const Students: FC = () => {
     getStudentsList();
   }, []);
 
+  const handleClickSearch = useCallback(async () => {
+    setIsLoading(true);
+    const characters = await getStudents();
+    setStudentsList(characters.filter(character => character.name.toLowerCase().includes(name.toLowerCase())));  
+    setIsLoading(false);
+  }, [name])
 
   useEffect(() => {
     getStudentsList();
@@ -50,12 +56,7 @@ const Students: FC = () => {
     setPage(page - 1);
   };
 
-  const handleClickSearch = useCallback(async () => {
-    setIsLoading(true);
-    const characters = await getStudents();
-    setStudentsList(characters.filter(character => character.name.toLowerCase().includes(name.toLowerCase())));  
-    setIsLoading(false);
-  }, [name])
+  
 
   if (isloading) {
     return <h1>LOADING</h1>;
