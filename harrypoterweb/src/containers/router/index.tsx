@@ -15,7 +15,7 @@ import PlayerMusic from '../../views/PlayerMusic';
 import CreateForm from '../../views/CreateCharacter';
 import EditCharacters from "../../views/EditCharacters";
 import EditStudents from '../../views/EditStudents';
-
+import EditSpells from '../../views/EditSpell';
 
 
 
@@ -66,6 +66,8 @@ const Router: FC = () => {
             <Route path='/createform' element={<CreateForm/>}/>
             <Route path='/characters/:id' element={<EditCharacters/>}/>
             <Route path='/students/:id' element={<EditStudents/>}/>
+            <Route path='/spells/:id' element={<EditSpells/>}/>
+
 
 
 

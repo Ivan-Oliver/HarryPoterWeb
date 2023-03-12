@@ -1,5 +1,5 @@
 import { FC, memo, useCallback, useEffect, useMemo, useState } from "react";
-import { useParams } from "react-router-dom"
+import { useParams, useNavigate} from "react-router-dom"
 import { Student } from "../../models/students";
 import {
     App,
@@ -17,23 +17,27 @@ import { validationSchema } from "./constants"
 import { getStudentById, updateStudent } from "../../services/api/students";
 
 
-const StudentEdit: FC = () => {
+const EditStudent: FC = () => {
     const { id:studentId } = useParams();
     const [student, setStudent] = useState<Student | null>(null);
     const [isLoading, setIsLoading] = useState<boolean>(false);
     const [isEditing, setIsEditing] = useState<boolean>(false);
+    const navigate = useNavigate();
+
 
     const handleActiveEdition = useCallback(async () => {
         setIsEditing(true);
+        
     }, []);
 
-    const onEditCharacter = useCallback(
+    const onEditStudent = useCallback(
         async (values: Partial<Student>) => {
             if (isEditing && studentId) {
                 setIsLoading(true);
                 const editedStudent = await updateStudent(studentId, values);
                 if (editedStudent) {
                     setStudent(editedStudent);
+                    navigate("/categories");
                 }
                 setIsLoading(false)
             }
@@ -89,7 +93,7 @@ const StudentEdit: FC = () => {
           <Formik
             type="edit"
             validationSchema={validationSchema}
-            onSubmit={onEditCharacter}
+            onSubmit={onEditStudent}
             initialValues={initialValues}
           >
             <Form>
@@ -200,4 +204,4 @@ const StudentEdit: FC = () => {
   );
 };
 
-export default memo(StudentEdit);
+export default memo(EditStudent);

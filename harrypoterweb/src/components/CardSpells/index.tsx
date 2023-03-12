@@ -4,11 +4,12 @@ import {
   Spellcardshape,
   Description,
   Container,
-  Title
+  Title,
+  DetailsButton
 } from "./styles";
 import { Props } from "./types";
 
-const CardSpells: FC<Props> = ({ name, description, onClick }) => {
+const CardSpells: FC<Props> = ({ name, description,spellId, onClick }) => {
   return (
       <Spellcardinner>
         <Spellcardshape>
@@ -16,6 +17,7 @@ const CardSpells: FC<Props> = ({ name, description, onClick }) => {
         <Container>
           <Title>Name: {name}</Title>
           <Description>Description: {description}</Description>
+          <DetailsButton onClick={() => onClick(spellId)}>Edit</DetailsButton>
         </Container>
     
       </Spellcardinner>

@@ -16,7 +16,7 @@ import { Character } from "../../models/characters";
 import { useNavigate, useParams } from "react-router-dom";
 import { getCharacterById, updateCharacter} from "../../services/api/characters";
 
-const CharacterEdit: FC = () => {
+const EditCharacter: FC = () => {
   const { id: characterId } = useParams();
   const [character, setCharacter] = useState<Character | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -201,4 +201,4 @@ const CharacterEdit: FC = () => {
   );
 };
 
-export default memo(CharacterEdit);
+export default memo(EditCharacter);
