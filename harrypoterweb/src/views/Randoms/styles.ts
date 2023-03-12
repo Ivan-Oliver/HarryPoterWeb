@@ -20,7 +20,8 @@ export const ButtonBoxes = styled.div`
 `
 
 export const ButtonLogin = styled.button`
-    
+    background-color: black;
+    color: white;
 `
 
 export const ButtonSignup = styled.button`
