@@ -12,7 +12,7 @@ import Students from '../../views/Students';
 import Profile from "../../views/Profile";
 import Randoms from "../../views/Randoms";
 import PlayerMusic from '../../views/PlayerMusic';
-import CreateForm from '../../views/CreateForm';
+import CreateForm from '../../views/CreateCharacter';
 import EditCharacters from "../../views/EditCharacters";
 
 

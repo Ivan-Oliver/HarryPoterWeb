@@ -34,6 +34,8 @@ const CharacterEdit: FC = () => {
         const editedCharacter = await updateCharacter(characterId, values);
         if (editedCharacter) {
           setCharacter(editedCharacter);
+          navigate("/characters");
+
         }
         setIsLoading(false);
       }

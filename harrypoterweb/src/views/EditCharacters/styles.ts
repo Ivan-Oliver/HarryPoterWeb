@@ -14,7 +14,6 @@ export const App = styled.div`
 `;
 
 export const AppEdit = styled.div`
-  background: linear-gradient(315deg, #9d523c 0%, #f2a65a 74%);
   flex: 0 0 300px;
   padding: 5px;
   padding-bottom: 25px;
@@ -27,13 +26,12 @@ export const AppEdit = styled.div`
   flex-direction: row;
   &:before {
     content: "Harry Potter character";
-    font-family: "Oswald";
+    font-family: "arial";
     font-weight: 700;
     text-transform: uppercase;
     font-size: 16px;
     letter-spacing: 0.5px;
     border-radius: 20px;
-    background: linear-gradient(to top, #9d523c 0%, #f2a65a 74%);
     position: absolute;
     z-index: 10;
     max-width: 225px;
@@ -43,9 +41,8 @@ export const AppEdit = styled.div`
     right: 0;
     margin: auto;
   }
-  /* Efecto de iluminación */
   &:hover {
-    box-shadow: 0 0 10px 10px #2f73d8;
+    box-shadow: 0 0 10px 10px black;
     transform: scale(1.05);
     transition: box-shadow 0.5s ease, transform 0.5s ease;
   }
@@ -73,11 +70,9 @@ export const InputContainer = styled.div`
 export const Input = styled.input<{ $hasError?: boolean }>`
   padding: 10px;
   margin: 10px;
-  border: none; /* eliminar el borde predeterminado */
-  border-bottom: 1px solid ${({ theme }) => theme.colors.white100}; /* agregar borde inferior */
-  background: transparent; /* hacer el fondo transparente */
+  background: transparent; 
   color: ${({ theme }) =>
-    theme.colors.white100}; /* establecer el color de texto */
+  theme.colors.black}; 
   padding: 10px 14px;
 
   ${({ $hasError, theme }) =>
@@ -121,5 +116,4 @@ export const ButtonBack = styled.button`
   border-radius: 5px;
   margin: 10px;
   cursor: pointer;
-  background: linear-gradient(315deg, #9d523c 0%, #f2a65a 74%);
 `;
