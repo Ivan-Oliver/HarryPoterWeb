@@ -54,6 +54,13 @@ const Characters: FC = () => {
     getCharactersList();
   }, [getCharactersList]);
 
+  const goToEdit = useCallback(
+    (id: string) => {
+      navigate(`/editcharacters/${id}`, { replace: true });
+    },
+    [navigate]
+  );
+
   const handleNextPage = () => {
     setPage(page + 1);
   };
@@ -80,6 +87,7 @@ const Characters: FC = () => {
                 image={character.image}
                 name={character.name}
                 house={character.house}
+                onClick={goToEdit}
                 id={character.id}
                 type="characters"
               />

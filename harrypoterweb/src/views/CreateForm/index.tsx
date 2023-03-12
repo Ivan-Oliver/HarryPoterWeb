@@ -20,10 +20,10 @@ const CreateForm: FC = () => {
   const navigate = useNavigate();
   const [error, setError] = useState<string | null>(null);
 
-//   const handleCreateCharacter = useCallback(async (values: Omit<Character, "id" | 'characterId'>) => {
-//     await createCharacter(values);
-//     navigate("/characters"); 
-//   }, [])
+  // const handleCreateCharacter = useCallback(async (values: Omit<Character, "id" | 'characterId'>) => {
+  //   await createCharacter(values);
+  //   navigate("/characters"); 
+  // }, [])
 
   const handlegoToBack = useCallback(() => {
     navigate("/characters");
@@ -32,8 +32,8 @@ const CreateForm: FC = () => {
     <FormContainer>
       {/* <Formik
         validationSchema={validationSchema}
-        // onSubmit={handleCreateCharacter}
-        // initialValues={initialValues}
+        onSubmit={handleCreateCharacter}
+        initialValues={initialValues}
       >
         <Form>
         <Field name="image">
