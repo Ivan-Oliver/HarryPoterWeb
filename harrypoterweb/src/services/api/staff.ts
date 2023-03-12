@@ -1,4 +1,5 @@
 import { getToken } from "../storage";
+import { normalizeStaff, StaffInput, Staff } from "../../models/staff"
 
 export type StaffResponse = {
   id: string;
@@ -20,12 +21,12 @@ export type StaffResponse = {
   updatedAt: Date;
 };
 
-const Base_Url_Api = "http://localhost:8000/staff";
+const BASE_API_URL = "http://localhost:8000/staff";
 
 export const getStaff = async () => {
   try {
     const token = getToken();
-    const response = await fetch(Base_Url_Api, {
+    const response = await fetch(BASE_API_URL, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -51,16 +52,49 @@ export const syncStaff = async () => {
   }
 };
 
+export const getStaffById = async (id: string): Promise<Staff | null> => {
+  try {
+    const token = getToken();
+    const response = await fetch(`${BASE_API_URL}/${id}`, {
+      method: "GET",
+      headers: { Authorization: `Bearer ${token}` },
+    });
+    const data: StaffResponse = await response.json();
+    return normalizeStaff(data);
+  } catch (error) {
+    console.log((error as Error).message);
+  }
+  return null;
+};
+
 export const removeStaff = async (id: string) => {
   try {
     const token = getToken();
-    await fetch(`${Base_Url_Api}/${id}`, {
+    await fetch(`${BASE_API_URL}/${id}`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,
       },
     });
+  } catch (error) {
+    console.log((error as Error).message);
+  }
+};
+
+export const updateStaff = async (id: string, data: Partial<StaffInput>) => {
+  try {
+    const token = getToken();
+    const response = await fetch(`${BASE_API_URL}/${id}`, {
+      method: "PUT",
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    });
+    const staff: StaffResponse = await response.json();
+    return normalizeStaff(staff);
   } catch (error) {
     console.log((error as Error).message);
   }

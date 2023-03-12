@@ -16,6 +16,7 @@ import CreateForm from '../../views/CreateCharacter';
 import EditCharacters from "../../views/EditCharacters";
 import EditStudents from '../../views/EditStudents';
 import EditSpells from '../../views/EditSpell';
+import EditStaff from '../../views/EditStaff';
 
 
 
@@ -67,6 +68,7 @@ const Router: FC = () => {
             <Route path='/characters/:id' element={<EditCharacters/>}/>
             <Route path='/students/:id' element={<EditStudents/>}/>
             <Route path='/spells/:id' element={<EditSpells/>}/>
+            <Route path='/staff/:id' element={<EditStaff/>}/>
 
 
 
