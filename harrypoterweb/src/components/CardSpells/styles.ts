@@ -23,4 +23,4 @@ export const Description = styled.p`
 color: black
 `;
 
-
+export const DetailsButton = styled.button``
