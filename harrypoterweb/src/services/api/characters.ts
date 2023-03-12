@@ -24,12 +24,12 @@ export type CharacterResponse = {
     updatedAt: Date;
 }
 
-const Base_Url_Api = "http://localhost:8000/characters";
+const BASE_URL_API = "http://localhost:8000/characters";
 
 export const getCharacters = async () => {
     try {
       const token = getToken();
-      const response = await fetch(Base_Url_Api, {
+      const response = await fetch(BASE_URL_API, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -58,7 +58,7 @@ export const getCharacters = async () => {
   export const removeCharacter = async (id: string) => {
     try {
       const token = getToken();
-      await fetch(`${Base_Url_Api}/${id}`, {
+      await fetch(`${BASE_URL_API}/${id}`, {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",
@@ -70,19 +70,18 @@ export const getCharacters = async () => {
     }
   };
   
-  export const getCharacterById = async (
-    id: string
-  ): Promise<Character | null> => {
+  export const createCharacter = async (data: Omit<Character, "id">) => {
     try {
       const token = getToken();
-      const response = await fetch(`${Base_Url_Api}/${id}`, {
-        method: "GET",
+      const response = await fetch(BASE_URL_API, {
+        method: "POST",
         headers: { Authorization: `Bearer ${token}` },
+        body: JSON.stringify(data),
       });
-      const data: CharacterResponse = await response.json();
-      return normalizeCharacter(data);
+      const character: CharacterResponse = await response.json();
+      return normalizeCharacter(character);
     } catch (error) {
       console.log((error as Error).message);
     }
-    return null;
   };
+  
