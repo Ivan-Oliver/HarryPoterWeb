@@ -1,6 +1,10 @@
 import { FC, memo, useCallback } from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { RiLockPasswordFill } from 'react-icons/ri';
+import { MdEmail } from 'react-icons/md';
+
+
 import {
   Form,
   FormButton,
@@ -41,7 +45,7 @@ const LoginForm: FC = () => {
           <Field name="email">
             {({ field, meta }: { field: any; meta: any }) => (
               <InputContainer>
-                <Label>Email</Label>
+                <Label><MdEmail/> Email</Label>
                 <Input $hasError={!!meta?.error} type="text" {...field} />
                 {meta?.error && <Error>{meta.error}</Error>}
               </InputContainer>
@@ -50,7 +54,7 @@ const LoginForm: FC = () => {
           <Field name="password">
             {({ field, meta }: { field: any; meta: any }) => (
               <InputContainer>
-                <Label>Password</Label>
+                <Label><RiLockPasswordFill/> Password</Label>
                 <Input $hasError={!!meta?.error} {...field} type="password" />
                 {meta?.error && <Error>{meta.error}</Error>}
               </InputContainer>

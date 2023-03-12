@@ -52,6 +52,22 @@ export const syncStaff = async () => {
   }
 };
 
+export const removeStaff = async (id: string) => {
+  try {
+    const token = getToken();
+    await fetch(`${BASE_API_URL}/${id}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    });
+  } catch (error) {
+    console.log((error as Error).message);
+  }
+};
+
+
 export const getStaffById = async (id: string): Promise<Staff | null> => {
   try {
     const token = getToken();
@@ -67,20 +83,6 @@ export const getStaffById = async (id: string): Promise<Staff | null> => {
   return null;
 };
 
-export const removeStaff = async (id: string) => {
-  try {
-    const token = getToken();
-    await fetch(`${BASE_API_URL}/${id}`, {
-      method: "DELETE",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
-      },
-    });
-  } catch (error) {
-    console.log((error as Error).message);
-  }
-};
 
 export const updateStaff = async (id: string, data: Partial<StaffInput>) => {
   try {

@@ -1,27 +1,27 @@
 import styled, { css } from "styled-components";
 import { Form as DefaultForm } from "formik";
+import Fondo from "../../../assets/fondoharry.jpg"
 
 export const FormContainer = styled.div`
+background-image: url(${Fondo});
   width: 100vw;
   height: 100vh;
   align-items: center;
   display: flex;
   justify-content: center;
-  background-color: ${({ theme }) => theme.colors.black};
   background-size: cover;
+  background-position: center ;
 `;
 
 export const Form = styled(DefaultForm)`
-  display: flex;
-  flex-direction: column;
-  border-radius: 10px;
-  height: 25rem;
-  width: 22.5rem;
-  margin-top: 6.25rem;
-  margin-left: 2rem;
-  margin-right: 1.7rem;
-  font-family: Oswald;
-  color: ${({ theme }) => theme.colors.white100};
+ position: reltive;
+  width: 400px;
+  height: 400px;
+  background: transparent;
+  border: 2px solid black;
+  border-radius: 20px;
+  backdrop-filter: blur(20px);
+
 `;
 
 export const InputContainer = styled.div`
@@ -65,7 +65,6 @@ export const FormButton = styled.button`
   cursor: pointer;
   margin: 16px;
   padding: 5px;
-  font-family: Oswald;
   background-color: ${({ theme }) => theme.colors.white100};
 `;
 
@@ -92,10 +91,9 @@ export const Return = styled.p`
   margin-top: 8px;
   margin-left: 10px;
   text-decoration: none;
-  color: ${({ theme }) => theme.colors.red};
+  color: ${({ theme }) => theme.colors.black};
 `;
 
 export const StyledLink = styled.a`
-  /* text-decoration: none; */
-  color: ${({ theme }) => theme.colors.blue};
+  color: ${({ theme }) => theme.colors.white100};
 `;

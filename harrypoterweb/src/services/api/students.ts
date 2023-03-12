@@ -56,21 +56,6 @@ export const syncStudents = async () => {
   }
 };
 
-export const getStudentById = async (id: string): Promise<Student | null> => {
-  try {
-    const token = getToken();
-    const response = await fetch(`${Base_Url_Api}/${id}`, {
-      method: "GET",
-      headers: { Authorization: `Bearer ${token}` },
-    });
-    const data: StudentResponse = await response.json();
-    return normalizeStudent(data);
-  } catch (error) {
-    console.log((error as Error).message);
-  }
-  return null;
-};
-
 export const removeStudent = async (id: string) => {
   try {
     const token = getToken();
@@ -84,6 +69,21 @@ export const removeStudent = async (id: string) => {
   } catch (error) {
     console.log((error as Error).message);
   }
+};
+
+export const getStudentById = async (id: string): Promise<Student | null> => {
+  try {
+    const token = getToken();
+    const response = await fetch(`${Base_Url_Api}/${id}`, {
+      method: "GET",
+      headers: { Authorization: `Bearer ${token}` },
+    });
+    const data: StudentResponse = await response.json();
+    return normalizeStudent(data);
+  } catch (error) {
+    console.log((error as Error).message);
+  }
+  return null;
 };
 
 export const updateStudent = async (
