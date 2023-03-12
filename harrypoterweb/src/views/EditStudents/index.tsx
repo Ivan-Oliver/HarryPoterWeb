@@ -37,7 +37,7 @@ const EditStudent: FC = () => {
                 const editedStudent = await updateStudent(studentId, values);
                 if (editedStudent) {
                     setStudent(editedStudent);
-                    navigate("/categories");
+                    navigate("/students");
                 }
                 setIsLoading(false)
             }

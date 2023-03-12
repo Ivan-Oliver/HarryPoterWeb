@@ -8,11 +8,6 @@ export type StudentInput = {
     house: string;
     wizard: string;
     ancestry: string;
-    wand: {
-        wood: string;
-        core: string;
-        size: string;
-    };
     patronus: string;
     actor: string;
     image?: string;
@@ -30,11 +25,6 @@ export const normalizeStudent = (input: StudentResponse) => {
         house: input?.house || "",
         wizard: input?.wizard || "",
         ancestry: input?.ancestry || "",
-        wand: {
-            wood: input?.wand?.wood || "",
-            core: input?.wand?.core || "",
-            size: input?.wand.length || "",
-        },
         patronus: input?.patronus || "",
         actor: input?.actor || "",
         image: input?.image || "",
