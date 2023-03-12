@@ -1,4 +1,9 @@
 import { getToken } from "../storage";
+import {
+  Student,
+  StudentInput,
+  normalizeStudent,
+} from "../../models/students"
 
 export type StudentResponse = {
   id: string;
@@ -51,6 +56,21 @@ export const syncStudents = async () => {
   }
 };
 
+export const getStudentById = async (id: string): Promise<Student | null> => {
+  try {
+    const token = getToken();
+    const response = await fetch(`${Base_Url_Api}/${id}`, {
+      method: "GET",
+      headers: { Authorization: `Bearer ${token}` },
+    });
+    const data: StudentResponse = await response.json();
+    return normalizeStudent(data);
+  } catch (error) {
+    console.log((error as Error).message);
+  }
+  return null;
+};
+
 export const removeStudent = async (id: string) => {
   try {
     const token = getToken();
@@ -61,6 +81,28 @@ export const removeStudent = async (id: string) => {
         Authorization: `Bearer ${token}`,
       },
     });
+  } catch (error) {
+    console.log((error as Error).message);
+  }
+};
+
+export const updateStudent = async (
+  id: string,
+  data: Partial<StudentInput>
+) => {
+  try {
+    const token = getToken();
+    const response = await fetch(`${Base_Url_Api}/${id}`, {
+      method: "PUT",
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    });
+    const student: StudentResponse = await response.json();
+    console.log({ student });
+    return normalizeStudent(student);
   } catch (error) {
     console.log((error as Error).message);
   }

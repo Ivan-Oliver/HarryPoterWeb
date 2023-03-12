@@ -14,6 +14,7 @@ import Randoms from "../../views/Randoms";
 import PlayerMusic from '../../views/PlayerMusic';
 import CreateForm from '../../views/CreateCharacter';
 import EditCharacters from "../../views/EditCharacters";
+import EditStudents from '../../views/EditStudents';
 
 
 
@@ -64,6 +65,7 @@ const Router: FC = () => {
             <Route path='/playermusic' element={<PlayerMusic/>}/>
             <Route path='/createform' element={<CreateForm/>}/>
             <Route path='/characters/:id' element={<EditCharacters/>}/>
+            <Route path='/students/:id' element={<EditStudents/>}/>
 
 
 
