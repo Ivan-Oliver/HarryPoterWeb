@@ -23,7 +23,6 @@ export type CharacterInput = {
 
 export const normalizeCharacter = (input: CharacterResponse) => {
  
-
   return {
     id: input?.id || "",
     characterId: input?.characterId || "",

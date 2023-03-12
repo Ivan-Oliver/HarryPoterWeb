@@ -13,6 +13,8 @@ import Profile from "../../views/Profile";
 import Randoms from "../../views/Randoms";
 import PlayerMusic from '../../views/PlayerMusic';
 import CreateForm from '../../views/CreateForm';
+import EditCharacters from "../../views/EditCharacters";
+
 
 
 
@@ -61,6 +63,8 @@ const Router: FC = () => {
             <Route path='/randoms' element={<Randoms/>}/>
             <Route path='/playermusic' element={<PlayerMusic/>}/>
             <Route path='/createform' element={<CreateForm/>}/>
+            <Route path='/characters/:id' element={<EditCharacters/>}/>
+
 
 
 
