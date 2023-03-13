@@ -17,7 +17,7 @@ export const DescriptionApi = styled.p`
 `;
 
 export const DetailsButton = styled(Link)`
-  
+  color:red;    
 `;
 
 export const EditButton = styled.button`

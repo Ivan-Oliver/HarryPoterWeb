@@ -70,7 +70,7 @@ export const getCharacters = async () => {
     }
   };
   
-  export const createCharacter = async (data: Omit<Character, "id">) => {
+  export const createCharacter = async (data: Omit<Character, "characterId">) => {
     try {
       const token = getToken();
       const response = await fetch(BASE_URL_API, {

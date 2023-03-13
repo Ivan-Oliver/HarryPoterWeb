@@ -4,7 +4,7 @@ import { Link } from "react-router-dom"
 export const Container = styled.div`
 width: 100%;
 height: 70px;
-background-color: #23394d;
+background-color: #000;
 `
 export const Wrapper = styled.div`
 width: 100%;
@@ -36,7 +36,7 @@ justify-content: space-between;
 list-style: none;
 
 @media screen and (max-width: 960px){
-	background-color: #23394d;
+	background-color: #000;
 	position: absolute;
 	top: 70px;
 	left: ${({$open}) => ($open ? "0" : "-100%")}; //Import
@@ -70,8 +70,8 @@ justify-content: center;
 align-items:center;
 height: 100%;
 padding: 0.5rem 2.5 rem;
-color: #64b2ff;
-background-color: #23394d;
+color: #fff;
+background-color: #000;
 border: none;
 font-family: sans-serif;
 font-size: 1rem;

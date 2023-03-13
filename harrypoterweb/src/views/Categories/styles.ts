@@ -6,7 +6,6 @@ import StudentsImg from '../../assets/wallpaperflare.com_wallpaper3.jpg'
 import StaffsImg from '../../assets/wallpaperflare.com_wallpaper1.jpg'
 import SpellsImg from '../../assets/wallpaperflare.com_wallpaper4.jpg'
 
-
 export const WelcomeContainer = styled.div`
 background-image: url(${CategoriesImg});
 background-repeat: no-repeat;
@@ -41,7 +40,7 @@ cursor: pointer;
  position: relative;
     border: none;
     font-size: 24px;
-    color:${({ theme }) => theme.colors.black};
+    color:${({ theme }) => theme.colors.white100};
     margin: 20px;
     padding: 5px;
     text-align: center;
@@ -81,7 +80,7 @@ cursor: pointer;
  position: relative;
     border: none;
     font-size: 24px;
-    color:${({ theme }) => theme.colors.black};
+    color:${({ theme }) => theme.colors.white100};
     margin: 20px;
     padding: 5px;
     text-align: center;
@@ -121,7 +120,7 @@ cursor: pointer;
  position: relative;
     border: none;
     font-size: 24px;
-    color:${({ theme }) => theme.colors.black};
+    color:${({ theme }) => theme.colors.white100};
     margin: 20px;
     padding: 5px;
     text-align: center;
@@ -161,7 +160,7 @@ cursor: pointer;
  position: relative;
     border: none;
     font-size: 24px;
-    color:${({ theme }) => theme.colors.black};
+    color:${({ theme }) => theme.colors.white100};
     margin: 20px;
     padding: 5px;
     text-align: center;

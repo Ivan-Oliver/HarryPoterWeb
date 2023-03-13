@@ -1,7 +1,7 @@
 import { FC, useCallback, memo, useState } from "react";
 import { useNavigate } from "react-router-dom"; import {
   ButtonBoxes,
-  ButtonLogin,
+  ButtonGame,
   WelcomeContainer
 } from './styles'
 import { Character } from "../../models/characters";
@@ -34,14 +34,13 @@ const Randoms: FC = () => {
     <Navbar/>
     <WelcomeContainer>
       <ButtonBoxes>
-        <ButtonLogin onClick={handleRandomCharacter}>Jugar</ButtonLogin>
+        <ButtonGame onClick={handleRandomCharacter}>Jugar</ButtonGame>
       </ButtonBoxes>
       <div>
         <CardChar
           image={character?.image}
           name={character?.name}
           house={character?.house}
-          id={character?.id}
         />
       </div>
     </WelcomeContainer>

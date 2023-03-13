@@ -19,7 +19,7 @@ export const ButtonBoxes = styled.div`
     display: flex;
 `
 
-export const ButtonLogin = styled.button`
+export const ButtonGame = styled.button`
     background-color: black;
     color: white;
 `
