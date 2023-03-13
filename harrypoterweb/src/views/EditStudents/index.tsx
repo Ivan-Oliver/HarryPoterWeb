@@ -97,6 +97,7 @@ const EditStudent: FC = () => {
             initialValues={initialValues}
           >
             <Form>
+            {isEditing && <EditButton type="submit">Edit</EditButton>}
               <Field name="name">
                 {({ field, meta }: { field: any; meta: any }) => (
                   <InputContainer>
@@ -195,7 +196,6 @@ const EditStudent: FC = () => {
                   </InputContainer>
                 )}
               </Field>
-              {isEditing && <EditButton type="submit">Edit</EditButton>}
             </Form>
           </Formik>
         </Container>

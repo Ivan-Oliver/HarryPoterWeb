@@ -8,7 +8,7 @@ import {
 } from "./styles";
 import { Props } from "./types";
 
-const Card: FC<Props> = ({
+const CardChar: FC<Props> = ({
   name,
   house,
   image,
@@ -48,4 +48,4 @@ const Card: FC<Props> = ({
   );
 };
 
-export default Card;
+export default CardChar;

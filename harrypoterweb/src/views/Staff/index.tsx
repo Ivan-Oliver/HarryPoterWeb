@@ -1,6 +1,6 @@
 import { FC, memo, useCallback, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Card from "../../components/Card";
+import CardChar from "../../components/Card";
 import Navbar from "../../components/Navbar";
 import { getStaff, syncStaff,StaffResponse, removeStaff } from "../../services/api/staff";
 import {
@@ -39,13 +39,6 @@ const Staffs: FC = () => {
     setStaffList(characters.filter(character => character.name.toLowerCase().includes(name.toLowerCase())));  
     setIsLoading(false);
   }, [name])
-  
-  // const handleGoToDetails = useCallback(
-  //   (staffId: string) => {
-  //     navigate(`/staff/${staffId}`, { replace: true });
-  //   },
-  //   [navigate]
-  // );
 
   const handleRemoveStaff = useCallback(async (id: string) => {
     setIsLoading(true);
@@ -58,8 +51,6 @@ const Staffs: FC = () => {
     getStaffList();
   }, [getStaffList]);
 
-  
-
   const handleNextPage = () => {
     setPage(page + 1);
   };
@@ -67,8 +58,6 @@ const Staffs: FC = () => {
   const handlePrevPage = () => {
     setPage(page - 1);
   };
-
-  
 
   if (loading) {
     return <h1>LOADING</h1>;
@@ -86,12 +75,11 @@ const Staffs: FC = () => {
           .slice((page - 1) * 8, (page - 1) * 8 + 8)
           .map((staff, index) => (
             <div key={index}>
-              <Card
+              <CardChar
                 key={index}
                 image={staff.image}
                 name={staff.name}
                 house={staff.house}
-                // onClick={handleGoToDetails}
                 id={staff.id}
                 type="staff"
               />

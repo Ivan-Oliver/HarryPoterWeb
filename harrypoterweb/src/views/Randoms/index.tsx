@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom"; import {
 } from './styles'
 import { Character } from "../../models/characters";
 import { getCharacters } from "../../services/api/characters";
-import Card from "../../components/Card";
+import CardChar from "../../components/Card";
 import Navbar from "../../components/Navbar";
 
 const Randoms: FC = () => {
@@ -37,7 +37,7 @@ const Randoms: FC = () => {
         <ButtonLogin onClick={handleRandomCharacter}>Jugar</ButtonLogin>
       </ButtonBoxes>
       <div>
-        <Card
+        <CardChar
           image={character?.image}
           name={character?.name}
           house={character?.house}

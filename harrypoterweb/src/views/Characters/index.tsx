@@ -2,7 +2,7 @@ import { FC, memo, useCallback, useEffect, useState } from "react";
 import { Character } from "../../models/characters";
 import { useNavigate } from "react-router-dom";
 import Navbar from "../../components/Navbar";
-import Card from "../../components/Card";
+import CardChar from "../../components/Card";
 import {
   getCharacters, syncCharacters, removeCharacter
 } from "../../services/api/characters";
@@ -83,7 +83,7 @@ const Characters: FC = () => {
           .slice((page - 1) * 8, (page - 1) * 8 + 8)
           .map((character, index) => (
             <div key={index}>
-              <Card
+              <CardChar
                 image={character.image}
                 name={character.name}
                 house={character.house}

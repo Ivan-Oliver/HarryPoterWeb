@@ -1,6 +1,6 @@
 import { FC, memo, useCallback, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Card from "../../components/Card";
+import CardChar from "../../components/Card";
 import Navbar from "../../components/Navbar";
 import {
   getStudents,
@@ -85,7 +85,7 @@ const Students: FC = () => {
           .slice((page - 1) * 8, (page - 1) * 8 + 8)
           .map((student, index) => (
             <div key={index}>
-              <Card
+              <CardChar
                 image={student.image}
                 name={student.name}
                 house={student.house}

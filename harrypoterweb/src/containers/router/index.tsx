@@ -11,7 +11,6 @@ import Staffs from '../../views/Staff';
 import Students from '../../views/Students';
 import Profile from "../../views/Profile";
 import Randoms from "../../views/Randoms";
-import PlayerMusic from '../../views/PlayerMusic';
 import CreateForm from '../../views/CreateCharacter';
 import EditCharacters from "../../views/EditCharacters";
 import EditStudents from '../../views/EditStudents';
@@ -63,7 +62,6 @@ const Router: FC = () => {
             <Route path='/students' element={<Students/>}/>
             <Route path='/profile' element={<Profile/>}/>
             <Route path='/randoms' element={<Randoms/>}/>
-            <Route path='/playermusic' element={<PlayerMusic/>}/>
             <Route path='/createform' element={<CreateForm/>}/>
             <Route path='/characters/:id' element={<EditCharacters/>}/>
             <Route path='/students/:id' element={<EditStudents/>}/>

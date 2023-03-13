@@ -1,6 +1,6 @@
 import styled from "styled-components";
 export const App = styled.div`
-  
+background: white;
 `;
 export const Container = styled.div`
   
@@ -11,8 +11,6 @@ export const BackContainer = styled.div`
 export const SyncButton = styled.button`
 
 `;
-
-
 
 export const ButtonPreview = styled.button`
   
