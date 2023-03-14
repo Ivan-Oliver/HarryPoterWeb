@@ -1,20 +1,19 @@
 import { FC, useCallback, useState } from 'react'
 import { Props } from './types'
 import { useLocation, useNavigate } from 'react-router-dom';
-import { FaDiscord, FaBars, FaUserAlt,FaGamepad} from 'react-icons/fa';
+import { Container, Wrapper, LogoContainer, Menu, MenuItem, Title, MenuItemLink, MobileIcon, ButtonLogo } from './styles'
+import { FaBars, FaUserAlt, FaGamepad } from 'react-icons/fa';
+import { GiMagicBroom } from 'react-icons/gi';
 import { RiLogoutBoxLine } from 'react-icons/ri';
 import { BiCategory } from 'react-icons/bi';
 import { IconContext } from 'react-icons';
-import { Container, Wrapper, LogoContainer, Menu, MenuItem, Title, MenuItemLink, MobileIcon, ButtonLogo} from './styles'
-
-
 
 const Navbar: FC<Props> = ({ type = 'list' }) => {
     const location = useLocation();
     const isLoginOrSignUp = location.pathname === "/login" || location.pathname === "/signUp" || location.pathname === "/";
 
     const profile = isLoginOrSignUp ? "Login" : "Profile";
-    const showProfileButton = location.pathname !== "/profile";
+    const showProfileButton = location.pathname !== "/profile";
 
     const [showMobileMenu, setShowMobileMenu] = useState(false)
     const navigate = useNavigate()
@@ -25,7 +24,7 @@ const Navbar: FC<Props> = ({ type = 'list' }) => {
 
     const handleGoToProfile = useCallback(() => {
         navigate("/profile");
-      }, [navigate]);
+    }, [navigate]);
 
     const handleLogout = useCallback((e: React.MouseEvent<HTMLButtonElement>) => {
         e.preventDefault();
@@ -35,20 +34,18 @@ const Navbar: FC<Props> = ({ type = 'list' }) => {
 
     const handleGoToGame = useCallback(() => {
         navigate("/randoms");
-      }, [navigate]);
+    }, [navigate]);
 
-      const handleGoToPlayerMusic = useCallback(() => {
+    const handleGoToPlayerMusic = useCallback(() => {
         navigate("/playermusic");
-      }, [navigate]);
-
-
+    }, [navigate]);
 
     return (
         <Container>
             <Wrapper>
                 <IconContext.Provider value={{ style: { fontSize: "2em" } }}>
                     <LogoContainer>
-                        <ButtonLogo onClick={handleBackCategories}><FaDiscord /></ButtonLogo>
+                        <ButtonLogo onClick={handleBackCategories}><GiMagicBroom /></ButtonLogo>
                         <Title>Harry Potter</Title>
                     </LogoContainer>
                     <MobileIcon onClick={() => setShowMobileMenu(!showMobileMenu)}>
@@ -56,19 +53,19 @@ const Navbar: FC<Props> = ({ type = 'list' }) => {
                     </MobileIcon>
                     <Menu $open={showMobileMenu}>
                         <MenuItem>
-                            <MenuItemLink onClick={handleLogout}><RiLogoutBoxLine/>Logout</MenuItemLink>
+                            <MenuItemLink onClick={handleLogout}><RiLogoutBoxLine />Logout</MenuItemLink>
                         </MenuItem>
                         <MenuItem>
-                            <MenuItemLink onClick={handleGoToPlayerMusic}> <FaGamepad/>Musica </MenuItemLink>
+                            <MenuItemLink onClick={handleGoToPlayerMusic}> <FaGamepad />Musica </MenuItemLink>
                         </MenuItem>
                         <MenuItem>
-                            <MenuItemLink onClick={handleGoToGame}> <FaGamepad/>Jugar </MenuItemLink>
+                            <MenuItemLink onClick={handleGoToGame}> <FaGamepad />Jugar </MenuItemLink>
                         </MenuItem>
                         <MenuItem>
-                            <MenuItemLink onClick={handleBackCategories}><BiCategory/>Categories </MenuItemLink>
+                            <MenuItemLink onClick={handleBackCategories}><BiCategory />Categories </MenuItemLink>
                         </MenuItem>
                         <MenuItem>
-                            <MenuItemLink onClick={handleGoToProfile}> <FaUserAlt/>Profile </MenuItemLink>
+                            <MenuItemLink onClick={handleGoToProfile}> <FaUserAlt />Profile </MenuItemLink>
                         </MenuItem>
                     </Menu>
                 </IconContext.Provider>

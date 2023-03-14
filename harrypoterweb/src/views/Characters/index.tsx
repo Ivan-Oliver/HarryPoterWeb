@@ -7,16 +7,7 @@ import {
   getCharacters, syncCharacters, removeCharacter
 } from "../../services/api/characters";
 import {
-  App,
-  FotterPage,
-  ButtonNext,
-  ButtonPreview,
-  Container,
-  SyncButton,
-  InputSearch,
-  ButtonSearch,
-  ButtonRemove
-} from "./styles";
+  MaxContainer, ButtonNext, ButtonPreview, Container, SyncButton, InputSearch, ButtonSearch, ButtonRemove, ButtonCreate, PrimerContainer } from "./styles";
 
 const Characters: FC = () => {
   const [characterList, setCharacterList] = useState<Character[]>([]);
@@ -50,6 +41,10 @@ const Characters: FC = () => {
     setIsLoading(false);
   }, []);
 
+  const handlegoToCreate = useCallback(() => {
+    navigate("/CreateCharacter");
+  }, [navigate]);
+
   useEffect(() => {
     getCharactersList();
   }, [getCharactersList]);
@@ -73,33 +68,37 @@ const Characters: FC = () => {
     return <h1>LOADING</h1>;
   }
   return (
-    <App>
+    <>
       <Navbar />
+      <PrimerContainer>
+      <ButtonCreate onClick={handlegoToCreate}>Create</ButtonCreate>
       <SyncButton onClick={handleSyncApi}>Sync Characters</SyncButton>
       <InputSearch type="text" value={name} placeholder="Find your favorite character..." onChange={(e) => setName(e.target.value)} />
       <ButtonSearch onClick={handleClickSearch}>🔍</ButtonSearch>
-      <Container>
-        {characterList
-          .slice((page - 1) * 8, (page - 1) * 8 + 8)
-          .map((character, index) => (
-            <div key={index}>
-              <CardChar
-                image={character.image}
-                name={character.name}
-                house={character.house}
-                onClick={goToEdit}
-                id={character.id}
-                type="characters"
-              />
-              <ButtonRemove onClick={() => handleRemoveCharacter(character.id)}>DELETE</ButtonRemove>
-            </div>
-          ))}
-      </Container>
-      <FotterPage>
-        <ButtonPreview onClick={handlePrevPage}>Previous</ButtonPreview>
-        <ButtonNext onClick={handleNextPage}>Next</ButtonNext>
-      </FotterPage>
-    </App>
+      </PrimerContainer>
+      <MaxContainer>
+        <Container>
+          {characterList
+            .slice((page - 1) * 8, (page - 1) * 8 + 8)
+            .map((character, index) => (
+              <div key={index}>
+                <CardChar
+                  image={character.image}
+                  name={character.name}
+                  house={character.house}
+                  onClick={goToEdit}
+                  id={character.id}
+                  type="characters"
+                />
+                <ButtonRemove onClick={() => handleRemoveCharacter(character.id)}>DELETE</ButtonRemove>
+              </div>
+            ))}
+          <ButtonPreview onClick={handlePrevPage}>Previous</ButtonPreview>
+          <ButtonNext onClick={handleNextPage}>Next</ButtonNext>
+        </Container>
+
+      </MaxContainer>
+    </>
   );
 };
 

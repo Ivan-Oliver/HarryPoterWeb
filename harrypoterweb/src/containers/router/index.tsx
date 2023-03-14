@@ -11,15 +11,11 @@ import Staffs from '../../views/Staff';
 import Students from '../../views/Students';
 import Profile from "../../views/Profile";
 import Randoms from "../../views/Randoms";
-import CreateForm from '../../views/CreateCharacter';
+import CreateCharacter from '../../views/CreateCharacter';
 import EditCharacters from "../../views/EditCharacters";
 import EditStudents from '../../views/EditStudents';
 import EditSpells from '../../views/EditSpell';
 import EditStaff from '../../views/EditStaff';
-
-
-
-
 
 const Router: FC = () => {
 
@@ -62,18 +58,11 @@ const Router: FC = () => {
             <Route path='/students' element={<Students/>}/>
             <Route path='/profile' element={<Profile/>}/>
             <Route path='/randoms' element={<Randoms/>}/>
-            <Route path='/createform' element={<CreateForm/>}/>
             <Route path='/characters/:id' element={<EditCharacters/>}/>
             <Route path='/students/:id' element={<EditStudents/>}/>
             <Route path='/spells/:id' element={<EditSpells/>}/>
             <Route path='/staff/:id' element={<EditStaff/>}/>
-
-
-
-
-
-
-
+            <Route path="/createcharacter" element={<ProtectedRoutes><CreateCharacter /></ProtectedRoutes>}></Route>
         </Routes>
         </BrowserRouter>
     )

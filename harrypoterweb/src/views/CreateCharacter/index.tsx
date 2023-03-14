@@ -1,5 +1,4 @@
-import { FC, memo, useCallback } from "react";
-import React, { useState } from "react";
+import { FC, memo, useCallback, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import {
   Form,
@@ -13,30 +12,29 @@ import {
 import { Formik, Field } from "formik";
 import { initialValues, validationSchema } from "./constants";
 import { createCharacter } from "../../services/api/characters";
-import { Character } from "../../models/characters";
+import { CharacterInput } from "../../models/characters";
 
-
-const CreateForm: FC = () => {
+const CreateChracter: FC = () => {
   const navigate = useNavigate();
   const [error, setError] = useState<string | null>(null);
 
-  // const handleCreateCharacter = useCallback(async (values: Omit<Character, "id" | 'characterId'>) => {
-  //   await createCharacter(values);
-  //   navigate("/characters"); 
-  // }, [])
+  const handleCreateCharacter = useCallback(async (values: CharacterInput) => {
+    await createCharacter(values);
+    navigate("/characters");
+  }, [])
 
   const handlegoToBack = useCallback(() => {
     navigate("/characters");
   }, [navigate]);
   return (
     <FormContainer>
-      {/* <Formik
+      <Formik
         validationSchema={validationSchema}
         onSubmit={handleCreateCharacter}
         initialValues={initialValues}
       >
         <Form>
-        <Field name="image">
+          <Field name="image">
             {({ field, meta }: { field: any; meta: any }) => (
               <InputContainer>
                 <Input $hasError={!!meta?.error} type="url" placeholder="IMAGEN"
@@ -67,9 +65,9 @@ const CreateForm: FC = () => {
           <FormButton type="submit">Create</FormButton>
           {<BackButton onClick={handlegoToBack}>Back</BackButton>}
         </Form>
-      </Formik> */}
+      </Formik>
     </FormContainer>
   );
 };
 
-export default memo(CreateForm);
+export default memo(CreateChracter);

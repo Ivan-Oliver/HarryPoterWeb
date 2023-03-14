@@ -9,15 +9,13 @@ import {
   syncStudents,
 } from "../../services/api/students";
 import {
-  App,
-  ButtonContainer,
+  MaxContainer,
   ButtonNext,
   ButtonPreview,
   Container,
   SyncButton,
   InputSearch,
   ButtonSearch,
-  FotterPage,
   ButtonRemove
 } from "./styles";
 
@@ -66,20 +64,16 @@ const Students: FC = () => {
     setPage(page - 1);
   };
 
-  
-
   if (isloading) {
     return <h1>LOADING</h1>;
   }
 
   return (
-    <App>
+    <MaxContainer>
         <Navbar/>
       <SyncButton onClick={handleSyncStudents}>Sync Students</SyncButton>
-      <ButtonContainer>
       <InputSearch type="text" value={name} placeholder="Find your favorite character..." onChange={(e) => setName(e.target.value)} />
         <ButtonSearch onClick={handleClickSearch}>🔍</ButtonSearch>
-      </ButtonContainer>
       <Container>
         {studentsList
           .slice((page - 1) * 8, (page - 1) * 8 + 8)
@@ -93,15 +87,12 @@ const Students: FC = () => {
                 type="students"
               />
               <ButtonRemove onClick={() => handleRemoveStudent(student.id)}>DELETE</ButtonRemove>
-
             </div>
           ))}
       </Container>
-      <FotterPage>
         <ButtonPreview onClick={handlePrevPage}>Previous</ButtonPreview>
         <ButtonNext onClick={handleNextPage}>Next</ButtonNext>
-      </FotterPage>
-    </App>
+    </MaxContainer>
   );
 };
 

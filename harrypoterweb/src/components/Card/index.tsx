@@ -2,7 +2,6 @@ import { FC } from "react";
 import {
   Container,
   Description,
-  DescriptionApi,
   DetailsButton,
   Image,
 } from "./styles";
@@ -28,8 +27,8 @@ const CardChar: FC<Props> = ({
 
       {type !== "edit" ? (
         <>
-          <DescriptionApi>Name:{name}</DescriptionApi>
-          <DescriptionApi>Hogwarts house:{house}</DescriptionApi>
+          <Description>Name:{name}</Description>
+          <Description>Hogwarts house:{house}</Description>
           <DetailsButton to={`/${type}/${id}`}>View {type}</DetailsButton>
         </>
       ) : (

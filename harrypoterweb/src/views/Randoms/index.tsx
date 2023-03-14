@@ -38,7 +38,6 @@ const Randoms: FC = () => {
       </ButtonBoxes>
       <div>
         <CardChar
-          image={character?.image}
           name={character?.name}
           house={character?.house}
         />
