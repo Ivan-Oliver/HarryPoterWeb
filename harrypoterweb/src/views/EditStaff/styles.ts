@@ -2,7 +2,7 @@ import styled, { css } from "styled-components";
 
 export const App = styled.div`
   text-align: center;
-  background-color: #282c34;
+  background-color: white;
   display: flex;
   height: 100%;
   flex-direction: column;
@@ -19,7 +19,6 @@ export const AppEdit = styled.div`
   padding-bottom: 25px;
   margin: 1em;
   border-radius: 20px;
-  box-shadow: 0 0 0 5px #740001;
   position: relative;
   transition: all 0.3s ease-in-out;
   display: flex;
@@ -41,11 +40,6 @@ export const AppEdit = styled.div`
     right: 0;
     margin: auto;
   }
-  &:hover {
-    box-shadow: 0 0 10px 10px black;
-    transform: scale(1.05);
-    transition: box-shadow 0.5s ease, transform 0.5s ease;
-  }
 `;
 
 export const Container = styled.div`
@@ -65,6 +59,9 @@ export const InputContainer = styled.div`
   &:not(:first-child) {
     margin-top: 16px;
   }
+  &:hover {
+    box-shadow: 0 0 2px 2px black;
+  }
 `;
 
 export const Input = styled.input<{ $hasError?: boolean }>`
@@ -80,7 +77,7 @@ export const Input = styled.input<{ $hasError?: boolean }>`
     css`
       color: ${theme.colors.GriffindorYellow};
       border-bottom-color: ${theme.colors
-        .GriffindorYellow}; /* agregar borde inferior amarillo cuando hay un error */
+        .GriffindorYellow}; 
     `}
 `;
 
@@ -89,7 +86,7 @@ export const Label = styled.label`
   font-size: 16px;
   font-weight: bold;
   margin: 16px;
-  color: ${({ theme }) => theme.colors.white100};
+  color: ${({ theme }) => theme.colors.black};
 `;
 
 export const Error = styled.span`
@@ -102,12 +99,26 @@ export const Error = styled.span`
 `;
 
 export const EditButton = styled.button`
-  border-radius: 5px;
+  display: inline-block;
+  padding: 15px 25px;
+  font-size: 24px;
   cursor: pointer;
-  margin: 16px;
-  padding: 5px;
-  font-family: Oswald;
-  background-color: ${({ theme }) => theme.colors.GriffindorGold};
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+  background-color: #4CAF50;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 9px #999;
+&:hover{
+  background-color: #3e8e41
+}
+&:active {
+  background-color: #3e8e41;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
 `;
 
 export const ButtonBack = styled.button`
@@ -116,4 +127,4 @@ export const ButtonBack = styled.button`
   border-radius: 5px;
   margin: 10px;
   cursor: pointer;
-`;
+`
