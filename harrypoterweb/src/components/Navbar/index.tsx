@@ -56,9 +56,6 @@ const Navbar: FC<Props> = ({ type = 'list' }) => {
                             <MenuItemLink onClick={handleLogout}><RiLogoutBoxLine />Logout</MenuItemLink>
                         </MenuItem>
                         <MenuItem>
-                            <MenuItemLink onClick={handleGoToPlayerMusic}> <FaGamepad />Musica </MenuItemLink>
-                        </MenuItem>
-                        <MenuItem>
                             <MenuItemLink onClick={handleGoToGame}> <FaGamepad />Jugar </MenuItemLink>
                         </MenuItem>
                         <MenuItem>

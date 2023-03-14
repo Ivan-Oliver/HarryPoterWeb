@@ -12,7 +12,8 @@ import {
   SyncButton,
   InputSearch,
   ButtonSearch,
-  ButtonRemove
+  ButtonRemove,
+  ContainerSearch
 } from "./styles";
 
 const Staffs: FC = () => {
@@ -67,8 +68,10 @@ const Staffs: FC = () => {
     <App>
       <Navbar/>
       <SyncButton onClick={handleSyncStaff}>Sync Staff</SyncButton>
+      <ContainerSearch>
       <InputSearch type="text" value={name} placeholder="Find your favorite character..." onChange={(e) => setName(e.target.value)} />
         <ButtonSearch onClick={handleClickSearch}>🔍</ButtonSearch>
+        </ContainerSearch>
 
       <Container>
         {staffList

@@ -7,7 +7,7 @@ import {
   getCharacters, syncCharacters, removeCharacter
 } from "../../services/api/characters";
 import {
-  MaxContainer, ButtonNext, ButtonPreview, Container, SyncButton, InputSearch, ButtonSearch, ButtonRemove, ButtonCreate, PrimerContainer } from "./styles";
+MaxContainer, ButtonNext, ButtonPreview, Container, SyncButton, InputSearch, ButtonSearch, ButtonRemove, ButtonCreate, FotterPage, ContainerSearch } from "./styles";
 
 const Characters: FC = () => {
   const [characterList, setCharacterList] = useState<Character[]>([]);
@@ -68,15 +68,14 @@ const Characters: FC = () => {
     return <h1>LOADING</h1>;
   }
   return (
-    <>
+    <MaxContainer>
       <Navbar />
-      <PrimerContainer>
-      <ButtonCreate onClick={handlegoToCreate}>Create</ButtonCreate>
+      {/* <ButtonCreate onClick={handlegoToCreate}>Create</ButtonCreate> */}
       <SyncButton onClick={handleSyncApi}>Sync Characters</SyncButton>
+      <ContainerSearch>
       <InputSearch type="text" value={name} placeholder="Find your favorite character..." onChange={(e) => setName(e.target.value)} />
-      <ButtonSearch onClick={handleClickSearch}>🔍</ButtonSearch>
-      </PrimerContainer>
-      <MaxContainer>
+        <ButtonSearch onClick={handleClickSearch}>🔍</ButtonSearch>
+        </ContainerSearch>
         <Container>
           {characterList
             .slice((page - 1) * 8, (page - 1) * 8 + 8)
@@ -93,12 +92,13 @@ const Characters: FC = () => {
                 <ButtonRemove onClick={() => handleRemoveCharacter(character.id)}>DELETE</ButtonRemove>
               </div>
             ))}
-          <ButtonPreview onClick={handlePrevPage}>Previous</ButtonPreview>
-          <ButtonNext onClick={handleNextPage}>Next</ButtonNext>
-        </Container>
+                    </Container>
 
-      </MaxContainer>
-    </>
+          <FotterPage>
+        <ButtonPreview onClick={handlePrevPage}>Previous</ButtonPreview>
+        <ButtonNext onClick={handleNextPage}>Next</ButtonNext>
+      </FotterPage>
+    </MaxContainer>
   );
 };
 

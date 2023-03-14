@@ -15,7 +15,8 @@ import {
   Container,
   SyncButton,
   InputSearch,
-  ButtonSearch
+  ButtonSearch,
+  ContainerSearch
 } from "./styles";
 
 const Spells: FC = () => {
@@ -71,8 +72,10 @@ const Spells: FC = () => {
     <App>
       <Navbar />
       <SyncButton onClick={handleSyncSpells}>Sync Spells</SyncButton>
+      <ContainerSearch>
       <InputSearch type="text" value={name} placeholder="Find your favorite character..." onChange={(e) => setName(e.target.value)} />
         <ButtonSearch onClick={handleClickSearch}>🔍</ButtonSearch>
+        </ContainerSearch>
       <Container>
         {spellsList
           .slice((page - 1) * 8, (page - 1) * 8 + 8)

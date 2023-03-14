@@ -55,18 +55,60 @@ export const ButtonNext = styled.button`
     }
 `;
 
-export const PrimerContainer = styled.div`
-    background-color: #282c34;
-`
 
 export const SyncButton = styled.button`
+  margin-top: 10px;
+  margin-bottom: 10px;
+   position: relative;
+    background-color: white;
+    border: none;
+    font-size: 14px;
+    color: black;
+    padding: 10px;
+    width: 200px;
+    text-align: center;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    text-decoration: none;
+    overflow: hidden;
+    cursor: pointer;
+    &:after{
+      content: "";
+    background: #282c34;
+    display: block;
+    position: absolute;
+    padding-top: 300%;
+    padding-left: 350%;
+    margin-left: -20px!important;
+    margin-top: -120%;
+    opacity: 0;
+    transition: all 0.8s
+    }
+    &:active::after{
+      padding: 0;
+    margin: 0;
+    opacity: 1;
+    transition: 0s
+    }
 `;
 
+export const ContainerSearch = styled.div`
+`
+
 export const InputSearch = styled.input`
+font-size: 20px;
+
 `
 export const ButtonSearch = styled.button`
+    background-color: #282c34;
+    text-decoration: none;
+	border: none;
+
 `
 export const ButtonRemove = styled.button`
 
 `
 
+export const FotterPage = styled.footer`
+  background-color: #282C34;
+`

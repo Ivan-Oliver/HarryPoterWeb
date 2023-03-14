@@ -16,7 +16,9 @@ import {
   SyncButton,
   InputSearch,
   ButtonSearch,
-  ButtonRemove
+  ButtonRemove,
+  FotterPage,
+  ContainerSearch
 } from "./styles";
 
 const Students: FC = () => {
@@ -72,8 +74,10 @@ const Students: FC = () => {
     <MaxContainer>
         <Navbar/>
       <SyncButton onClick={handleSyncStudents}>Sync Students</SyncButton>
+      <ContainerSearch>
       <InputSearch type="text" value={name} placeholder="Find your favorite character..." onChange={(e) => setName(e.target.value)} />
         <ButtonSearch onClick={handleClickSearch}>🔍</ButtonSearch>
+        </ContainerSearch>
       <Container>
         {studentsList
           .slice((page - 1) * 8, (page - 1) * 8 + 8)
@@ -90,8 +94,10 @@ const Students: FC = () => {
             </div>
           ))}
       </Container>
+      <FotterPage>
         <ButtonPreview onClick={handlePrevPage}>Previous</ButtonPreview>
         <ButtonNext onClick={handleNextPage}>Next</ButtonNext>
+      </FotterPage>
     </MaxContainer>
   );
 };
